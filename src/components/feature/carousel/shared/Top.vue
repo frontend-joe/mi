@@ -2,7 +2,7 @@
   <TopRow>
     <Waves :style="{ display: 'none' }" />
     <span>
-      Micro interactions
+      Micro Interactions
     </span>
     <TopRightText v-if="topRightText">
       {{ topRightText }}
@@ -24,7 +24,7 @@ const TopRow = styled.div`
   padding: 0 28px;
   font-size: 20px;
   font-weight: 600;
-  color: ${rgba("#10132F", 0.8)};
+  color: ${rgba("#090C22", 0.8)};
 `;
 
 const Waves = styled.div`
@@ -40,7 +40,7 @@ const Waves = styled.div`
 `;
 
 const TopRightText = styled.div`
-  color: ${rgba("#10132F", 0.38)};
+  color: ${rgba("#090C22", 0.38)};
 `;
 
 export default {

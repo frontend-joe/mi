@@ -5,7 +5,6 @@
     :clicked="clicked"
     @click="onClick"
   >
-    <ButtonProgress :clicked="clicked" />
     <TrashAnimationStage>
       <TrashWrapper>
         <PaperUnshreddedWrapper>
@@ -22,34 +21,20 @@
         </TrashCan>
       </TrashWrapper>
     </TrashAnimationStage>
-    <ButtonText>
-      {{ clicked ? (deleted ? "Deleted" : "Deleting") : "Delete Stuff" }}
-    </ButtonText>
-    <AnimatedDots
-      wrapperHeight="69px"
-      wrapperWidth="20px"
-      dotSize="3px"
-      dotGap="2px"
-      v-if="clicked && !deleted"
-    />
-    <ButtonIcon v-if="deleted && clicked" class="material-icons-outlined">
-      check
-    </ButtonIcon>
   </StyledButton>
 </template>
 
 <script>
 import styled, { keyframes } from "vue-styled-components";
-import AnimatedDots from "@/components/shared/AnimatedDots";
 
-const animationLengthNumber = 1;
-// const animationLengthNumber = 2.5;
+// const animationLengthNumber = 1;
+const animationLengthNumber = 2.5;
 const animationLength = `${animationLengthNumber}s`;
 const animationIterationCount = 3;
-const paperShreddedColor = "#fff";
-const paperUnshreddedColor = "#fff";
-const trashcanColor = "#fff";
-const trashcanPaperColor = "#fff";
+const paperShreddedColor = "#06D6A0";
+const paperUnshreddedColor = "#F56476";
+const trashcanColor = "#1D84B5";
+const trashcanPaperColor = "#ED7D3A";
 
 const buttonProps = { clicked: Boolean, deleted: Boolean };
 
@@ -57,16 +42,15 @@ const StyledButton = styled("button", buttonProps)`
   position: relative;
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   height: 56px;
-  min-width: 184px;
-  max-width: 184px;
-  padding: 0 1.25rem 0 1rem;
+  width: 56px;
   border: 0;
   border-radius: 0.325rem;
   font-family: "DM Sans", sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  background: ${props => (props.deleted ? "#5ABE97" : "#192E3F")};
+  background: ${props => (props.deleted ? "#192E3F" : "#192E3F")};
   color: #ffffff;
   cursor: pointer;
   outline: none;
@@ -82,57 +66,8 @@ const StyledButton = styled("button", buttonProps)`
   }
 `;
 
-const buttonProgressAnimation = keyframes`
-  0% {
-    width: 0%;
-  }
-  33.33% {
-    width: 28%;
-  }
-  66.66% {
-    width: 65%;
-  }
-  100% {
-    width: 100%;
-  }
-`;
-
-const ButtonProgress = styled("span", buttonProps)`
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  height: 56px;
-  background: rgba(255, 255, 255, 0.05);
-  ${props =>
-    props.clicked
-      ? `animation: ${buttonProgressAnimation} ease-in-out
-        ${animationLengthNumber * animationIterationCount}s`
-      : ""}
-`;
-
-const ButtonText = styled.span`
-  position: relative;
-  z-index: 1;
-  display: block;
-  font-size: 1.25rem;
-  margin-left: 0.75rem;
-  height: 56px;
-  line-height: 56px;
-`;
-
-const buttonIconAnimation = keyframes`
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-`;
-
-const ButtonIcon = styled.i`
-  line-height: 56px;
-  margin-left: 0.75rem;
-  animation: ${buttonIconAnimation} ease-in-out 0.4s;
-`;
-
 const TrashAnimationStage = styled.span`
+  margin-top: -16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -287,14 +222,10 @@ export default {
     TrashCan,
     TrashCanPaper,
     TrashLid,
-    ButtonText,
-    ButtonIcon,
-    ButtonProgress,
     PaperUnshreddedWrapper,
     PaperUnshredded,
     PaperShreddedWrapper,
-    PaperShredded,
-    AnimatedDots
+    PaperShredded
   },
   data: function() {
     return {
@@ -314,7 +245,7 @@ export default {
           this.deleted = false;
           this.clicked = false;
         }, 2000);
-      }, animationLengthNumber * animationIterationCount * 1000);
+      }, animationLengthNumber * animationIterationCount * 1024);
     }
   }
 };

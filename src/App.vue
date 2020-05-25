@@ -1,6 +1,7 @@
 <template>
   <StyleWrapper :theme="theme">
     <Hamburger
+      v-if="env === 'development'"
       :open="sidebarOpen"
       v-on:crossbutton-clicked="handleMenuButtonClicked"
     />
@@ -38,10 +39,14 @@ export default {
       this.sidebarOpen = !this.sidebarOpen;
     }
   },
+  mounted() {
+    this.env = process.env.NODE_ENV;
+  },
   data() {
     return {
       theme: themeDefault,
-      sidebarOpen: false
+      sidebarOpen: false,
+      env: ""
     };
   }
 };
@@ -66,6 +71,14 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+button,
+input,
+label,
+select {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
 }
 
 button,

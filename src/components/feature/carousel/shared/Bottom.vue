@@ -1,6 +1,6 @@
 <template>
   <BottomRow>
-    <FrontendJoe :src="require('@/assets/images/frontendjoe.png')" />
+    <FrontendJoe :src="handleUrl" />
     <SaveIcon :style="{ display: 'none' }" class="material-icons-outlined">
       bookmark_outline
     </SaveIcon>
@@ -47,6 +47,24 @@ const SaveIcon = styled.i`
 `;
 
 export default {
+  props: {
+    handleColor: String
+  },
+  data() {
+    return {
+      handleUrl: "@/assets/images/arrow.png"
+    };
+  },
+  mounted() {
+    switch (this.handleColor) {
+      case "grey":
+        this.handleUrl = require("@/assets/images/frontendjoe-grey.png");
+        break;
+      default:
+        this.handleUrl = require("@/assets/images/frontendjoe.png");
+        break;
+    }
+  },
   components: {
     BottomRow,
     FrontendJoe,

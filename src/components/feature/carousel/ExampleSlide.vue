@@ -1,23 +1,23 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#fbfbff">
+      <Frame background="#ffffff">
         <StyledBackground
-          :src="require('@/assets/images/wave-background3.png')"
+          :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top topRightText="#01" />
+        <Top topRightText="#02" />
         <Middle>
-          <FocalInteraction />
+          <FocalInteraction slowMo :style="{ transform: 'scale(1.5, 1.5)' }" />
         </Middle>
-        <Bottom />
+        <Bottom handleColor="grey" />
       </Frame>
       <ImagePrev
         v-if="false"
-        :image="require('@/assets/images/custom – 14.png')"
+        :image="require('@/assets/images/slide-before-example.png')"
       />
       <ImageNext
         v-if="false"
-        :image="require('@/assets/images/custom – 8.png')"
+        :image="require('@/assets/images/slide-after-example.png')"
       />
     </FrameWrapper>
   </StyledWrapper>
@@ -25,7 +25,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import FocalInteraction from "@/components/interactions/hamburgerCross/Example";
+import FocalInteraction from "@/components/interactions/bottomNavigation/Wrapper";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -46,10 +46,9 @@ const StyledWrapper = styled.div`
 const StyledBackground = styled.img`
   position: absolute;
   z-index: 0;
-  top: -130px;
-  right: -35px;
+  top: -91px;
+  right: 0px;
   width: 200%;
-  height: 400px;
 `;
 
 export default {

@@ -18,7 +18,7 @@ const StyledWrapper = styled("div", sidebarProps)`
   top: 0;
   left: 0;
   transform: translateX(${props => (props.open ? "0" : "-200px")});
-  width: 200px;
+  width: 100px;
   height: 100%;
   padding-top: 6rem;
 
@@ -63,20 +63,8 @@ export default {
           text: "First"
         },
         {
-          url: "/first-slide2",
-          text: "First 2"
-        },
-        {
-          url: "/first-slide3",
-          text: "First 3"
-        },
-        {
           url: "/example-slide",
           text: "Example"
-        },
-        {
-          url: "/leo-slide",
-          text: "Leo"
         }
       ]
     };
