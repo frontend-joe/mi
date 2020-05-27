@@ -48,7 +48,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/rippleButton/Wrapper";
+import FocalInteraction from "@/components/interactions/rippleButton/WrapperCss";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

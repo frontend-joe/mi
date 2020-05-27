@@ -6,34 +6,27 @@
 
 <script>
 import styled, { keyframes } from "vue-styled-components";
-import { rgba, lighten } from "polished";
+import { lighten, darken } from "polished";
 
 const backgroundColor = "#445FE7";
-const rippleColor = "#445FE7";
+// const rippleColor = "#445FE7";
 
 const rippleAnimation = keyframes`
 0% {
   opacity: 0;
   transform: scale(0) translate(-50%, -50%);
-  /* box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.15),
-    inset 0 0 0 10px rgba(255, 255, 255, 0.15); */
-  /* box-shadow: inset 8px 8px 17px 0 rgba(0, 0, 0, 0.05),
-    inset -13px -13px 12px 0 #5448c8, -11px -11px 40px 3px #5448c8,
-    8px 14px 40px -20px rgba(0, 0, 0, 0.19); */
 }
-75% {
+
+35% {
   opacity: 1;
 }
 100% {
   opacity: 0;
-  transform: scale(3) translate(-50%, -50%);
-  /* box-shadow: inset 8px 8px 17px 0 rgba(0, 0, 0, 0.05),
-    inset -13px -13px 12px 0 #5448c8, -11px -11px 40px 3px #5448c8,
-    8px 14px 40px -20px rgba(0, 0, 0, 0.19); */
-  /* box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.15),
-    inset 0 0 0 30px rgba(255, 255, 255, 0.15); */
+  transform: scale(1.75) translate(-50%, -50%);
 }
 `;
+
+const rippleAnimationDuration = "1.15s";
 
 const StyledButton = styled.button`
   position: relative;
@@ -53,24 +46,22 @@ const StyledButton = styled.button`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: ${rgba(rippleColor, 0.5)};
-    box-shadow: inset 0 0 10px ${lighten(0.015, rippleColor)},
-      inset 0 0 10px rgba(255, 255, 255, 0.075);
-
+    box-shadow: inset -5px -5px 10px ${lighten(0.075, backgroundColor)},
+      inset 5px 5px 10px ${darken(0.1, backgroundColor)};
+    opacity: 0;
     pointer-events: none;
     transform-origin: 0% 0%;
     animation-timing-function: infinite;
-    animation: ${rippleAnimation} 1.25s;
+    animation: ${rippleAnimation} ${rippleAnimationDuration};
   }
 
   & .ripple-center {
-    content: "";
-    width: 40px;
-    height: 40px;
+    width: 75%;
+    height: 75%;
     border-radius: 50%;
-    background: ${rgba(rippleColor, 0.25)};
-    box-shadow: inset 0 0 10px ${lighten(0.015, rippleColor)},
-      inset 0 0 10px rgba(255, 255, 255, 0.025);
+    background: ${backgroundColor};
+    box-shadow: inset -5px -5px 10px ${lighten(0.075, backgroundColor)},
+      inset 5px 5px 10px ${darken(0.1, backgroundColor)};
   }
 
   & .ripple-image {
@@ -79,7 +70,7 @@ const StyledButton = styled.button`
     pointer-events: none;
     transform-origin: 0% 0%;
     animation-timing-function: infinite;
-    animation: ${rippleAnimation} 1.25s;
+    animation: ${rippleAnimation} ${rippleAnimationDuration};
   }
 `;
 
@@ -118,8 +109,11 @@ export default {
       // create element
       const rippleButton = document.getElementById("ripple-button");
 
-      const rippleDomElement = document.createElement("img");
-      rippleDomElement.className = "ripple-image";
+      // const rippleDomElement = document.createElement("img");
+      // rippleDomElement.className = "ripple-image";
+      const rippleDomElement = document.createElement("span");
+      rippleDomElement.className = "ripple";
+
       rippleDomElement.src = require("@/assets/images/ripple.png");
       rippleDomElement.style.position = "absolute";
       rippleDomElement.style.transform = "scale(1) translate(-50%, -50%)";
