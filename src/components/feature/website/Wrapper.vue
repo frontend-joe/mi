@@ -33,6 +33,11 @@
             <BottomNavigation />
           </StyledSlide>
         </Slide>
+        <Slide>
+          <StyledSlide>
+            <RippleButton />
+          </StyledSlide>
+        </Slide>
       </Carousel>
     </Content>
     <Bottombar
@@ -55,6 +60,7 @@ import Bottombar from "./layout/bottombar/Bottombar";
 import TrashShredderDelete from "@/components/interactions/trashShredderDelete/Wrapper";
 import HamburgerCross from "@/components/interactions/hamburgerCross/Wrapper2";
 import BottomNavigation from "@/components/interactions/bottomNavigation/Wrapper";
+import RippleButton from "@/components/interactions/rippleButton/WrapperCss";
 // import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
@@ -87,7 +93,8 @@ export default {
     StyledSlide,
     TrashShredderDelete,
     HamburgerCross,
-    BottomNavigation
+    BottomNavigation,
+    RippleButton
     // AeroplaneSend,
     // PartyConfirm
   },
@@ -101,9 +108,10 @@ export default {
     return {
       slides: [
         {
+          component: HamburgerCross,
           collabs: [
             {
-              name: "@leeohgonzalez",
+              name: "leeohgonzalez",
               image: require("@/assets/images/leeo.png")
             }
           ]
@@ -132,7 +140,7 @@ export default {
             //   image: require("@/assets/images/lia.png")
             // },
             {
-              name: "@bydanromero",
+              name: "bydanromero",
               image: require("@/assets/images/dan.png")
             }
           ]
@@ -140,8 +148,16 @@ export default {
         {
           collabs: [
             {
-              name: "@ux.ale",
+              name: "ux.ale",
               image: require("@/assets/images/ale.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "andrew.eugene",
+              image: require("@/assets/images/eugene.png")
             }
           ]
         }

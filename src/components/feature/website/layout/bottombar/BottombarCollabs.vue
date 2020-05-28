@@ -6,13 +6,16 @@
     <StyledImageWrapper content="@bydanromero" v-tippy>
       <StyledImage :src="danImage" />
     </StyledImageWrapper> -->
+
     <StyledImageWrapper
       v-for="collab in collabs"
       :key="collab.name"
-      :content="collab.name"
+      :content="`@${collab.name}`"
       v-tippy
     >
-      <StyledImage :src="collab.image" />
+      <a target="_blank" :href="`https://www.instagram.com/${collab.name}`">
+        <StyledImage :src="collab.image" />
+      </a>
     </StyledImageWrapper>
   </StyledWrapper>
 </template>
