@@ -14,15 +14,17 @@ const backgroundColor = "#445FE7";
 const rippleAnimation = keyframes`
 0% {
   opacity: 0;
-  transform: scale(0) translate(-50%, -50%);
+  transform: scale(0.5) translate(-50%, -50%);
 }
 
 35% {
   opacity: 1;
 }
-100% {
+70% {
   opacity: 0;
-  transform: scale(1.75) translate(-50%, -50%);
+}
+100% {
+  transform: scale(2.25) translate(-50%, -50%);
 }
 `;
 
@@ -31,10 +33,10 @@ const rippleAnimationDuration = "1.15s";
 const StyledButton = styled.button`
   position: relative;
   overflow: hidden;
-  height: 56px;
-  width: 180px;
+  height: 64px;
+  width: 190px;
   border: 0;
-  border-radius: 27px;
+  border-radius: 32px;
   background: ${backgroundColor};
   color: white;
 
@@ -46,8 +48,9 @@ const StyledButton = styled.button`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    box-shadow: inset -5px -5px 10px ${lighten(0.075, backgroundColor)},
-      inset 5px 5px 10px ${darken(0.1, backgroundColor)};
+    background: rgba(0, 0, 0, 0.2);
+    ${"" /* box-shadow: inset -5px -5px 10px ${lighten(0.075, backgroundColor)},
+      inset 5px 5px 10px ${darken(0.1, backgroundColor)}; */}
     opacity: 0;
     pointer-events: none;
     transform-origin: 0% 0%;
@@ -79,6 +82,7 @@ const StyledButtonText = styled.span`
   z-index: 1;
   top: 50%;
   left: 50%;
+  font-size: 1.175rem;
   font-weight: 600;
   transform: translate(-50%, -50%);
   white-space: nowrap;

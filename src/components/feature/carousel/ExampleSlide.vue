@@ -5,11 +5,11 @@
         <StyledBackground
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top topRightText="#02" />
+        <Top topRightText="#04" />
         <Middle>
-          <FocalInteraction slowMo :style="{ transform: 'scale(1.5, 1.5)' }" />
+          <FocalInteraction slowMo :style="{ transform: 'scale(1, 1)' }" />
         </Middle>
-        <Bottom handleColor="grey" />
+        <Bottom />
       </Frame>
       <ImagePrev
         v-if="false"
@@ -25,7 +25,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import FocalInteraction from "@/components/shared/NeumorphicDonut";
+import FocalInteraction from "@/components/interactions/rippleButton/WrapperCss";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

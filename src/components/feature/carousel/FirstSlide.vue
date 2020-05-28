@@ -33,7 +33,7 @@
           :src="require('@/assets/images/first-slide-branding1.png')"
         />
         <StyledBranding2
-          v-if="false"
+          v-if="true"
           :src="require('@/assets/images/first-slide-branding2.png')"
         />
       </Frame>
@@ -101,7 +101,7 @@ const StyledMiddleWrapper = styled.div`
   right: 0;
   bottom: 0;
   width: 70%;
-  height: 284px;
+  height: 288px;
 `;
 
 const StyledMiddleText = styled.div`
