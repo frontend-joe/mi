@@ -1,6 +1,5 @@
 <template>
   <StyledWrapper>
-    <TopbarMenu />
     <TopbarTitle />
     <TopbarGithubLink />
   </StyledWrapper>
@@ -8,7 +7,6 @@
 
 <script>
 import styled from "vue-styled-components";
-import TopbarMenu from "./TopbarMenu";
 import TopbarGithubLink from "./TopbarGithubLink";
 import TopbarTitle from "./TopbarTitle";
 
@@ -27,7 +25,6 @@ const StyledWrapper = styled.div`
 export default {
   components: {
     StyledWrapper,
-    TopbarMenu,
     TopbarGithubLink,
     TopbarTitle
   }

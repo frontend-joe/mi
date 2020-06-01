@@ -5,23 +5,26 @@
         <StyledBackground
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Ripple</StyledBackgroundText>
+        <StyledBackgroundText>r Plane</StyledBackgroundText>
+        <!-- <StyledBackgroundText>Underline</StyledBackgroundText> -->
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#04" />
+        <Top topRightText="#05" />
         <Middle horizontalAlign="flex-start">
           <StyledMiddleText>
-            <StyledTitle>The Ripple Button</StyledTitle>
+            <StyledTitle>
+              The
+              <StyledTitleLongText>Paper Plane</StyledTitleLongText>
+              Send
+            </StyledTitle>
+            <!-- <StyledTitle>The Underline Button</StyledTitle> -->
             <div :style="{ marginBottom: '1.5rem' }">
               <StyledImage :src="require('@/assets/images/joe.png')" />
-              <StyledImage
-                :src="require('@/assets/images/eugene.png')"
-                isLast
-              />
+              <StyledImage :src="require('@/assets/images/mike.png')" isLast />
             </div>
-            <StyledNumber>Collab Series #04</StyledNumber>
+            <StyledNumber>Collab Series #05</StyledNumber>
           </StyledMiddleText>
           <StyledMiddleWrapper>
             <FocalInteraction />
@@ -48,7 +51,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/rippleButton/WrapperCss";
+import FocalInteraction from "@/components/interactions/aeroplaneSend/Wrapper";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -83,6 +86,7 @@ const StyledBackgroundText = styled.div`
   font-size: 180px;
   font-weight: 600;
   color: #f3f4fb;
+  white-space: nowrap;
 `;
 
 const StyledBubble = styled.img`
@@ -126,6 +130,10 @@ const StyledTitle = styled.div`
   color: ${rgba("#090C22", 0.85)};
 `;
 
+const StyledTitleLongText = styled.div`
+  white-space: nowrap;
+`;
+
 const imageProps = { isLast: Boolean };
 const StyledImage = styled("img", imageProps)`
   border-radius: 50%;
@@ -163,6 +171,7 @@ export default {
     StyledMiddleText,
     StyledNumber,
     StyledTitle,
+    StyledTitleLongText,
     StyledImage,
     StyledBranding1,
     StyledBranding2,

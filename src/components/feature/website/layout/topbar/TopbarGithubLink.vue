@@ -1,5 +1,5 @@
 <template>
-  <StyledGithubLink>
+  <StyledGithubLink target="_blank" href="https://github.com/vuezy/mi">
     <StyledGithubIcon :icon="['fab', 'github']" />
     <StyledGithubText>
       View on GitHub

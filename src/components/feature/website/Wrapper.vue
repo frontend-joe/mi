@@ -13,11 +13,7 @@
             <HamburgerCross />
           </StyledSlide>
         </Slide>
-        <!-- <Slide>
-          <StyledSlide>
-            <AeroplaneSend />
-          </StyledSlide>
-        </Slide>
+        <!--
         <Slide>
           <StyledSlide>
             <PartyConfirm />
@@ -30,12 +26,17 @@
         </Slide>
         <Slide>
           <StyledSlide>
-            <BottomNavigation />
+            <NavbarSlider />
           </StyledSlide>
         </Slide>
         <Slide>
           <StyledSlide>
             <RippleButton />
+          </StyledSlide>
+        </Slide>
+        <Slide>
+          <StyledSlide>
+            <AeroplaneSend />
           </StyledSlide>
         </Slide>
       </Carousel>
@@ -59,9 +60,9 @@ import Bottombar from "./layout/bottombar/Bottombar";
 
 import TrashShredderDelete from "@/components/interactions/trashShredderDelete/Wrapper";
 import HamburgerCross from "@/components/interactions/hamburgerCross/Wrapper2";
-import BottomNavigation from "@/components/interactions/bottomNavigation/Wrapper";
+import NavbarSlider from "@/components/interactions/navbarSlider/Wrapper";
 import RippleButton from "@/components/interactions/rippleButton/WrapperCss";
-// import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
+import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
 const StyledWrapper = styled.div`
@@ -93,9 +94,9 @@ export default {
     StyledSlide,
     TrashShredderDelete,
     HamburgerCross,
-    BottomNavigation,
-    RippleButton
-    // AeroplaneSend,
+    NavbarSlider,
+    RippleButton,
+    AeroplaneSend
     // PartyConfirm
   },
   computed: {
@@ -108,7 +109,6 @@ export default {
     return {
       slides: [
         {
-          component: HamburgerCross,
           collabs: [
             {
               name: "leeohgonzalez",
@@ -116,14 +116,6 @@ export default {
             }
           ]
         },
-        // {
-        //   collabs: [
-        //     {
-        //       name: "@mikevdijssel",
-        //       image: require("@/assets/images/mike.png")
-        //     }
-        //   ]
-        // },
         // {
         //   collabs: [
         //     {
@@ -158,6 +150,14 @@ export default {
             {
               name: "andrew.eugene",
               image: require("@/assets/images/eugene.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "@mikevdijssel",
+              image: require("@/assets/images/mike.png")
             }
           ]
         }

@@ -1,5 +1,10 @@
 <template>
-  <StyledButton @click="onClick" :clicked="clicked" :disabled="clicked">
+  <StyledButton
+    @click="onClick"
+    :clicked="clicked"
+    :disabled="clicked"
+    :sent="sent"
+  >
     <ButtonIcon :clicked="clicked" class="material-icons-outlined" :sent="sent">
       {{ sent ? "check" : "send" }}
     </ButtonIcon>
@@ -10,7 +15,7 @@
         class="material-icons-outlined"
         >check</span
       >
-      {{ !clicked ? "Send msg" : clicked && sent ? "Sent" : "Sending" }}
+      {{ !clicked ? "Send Msg" : clicked && sent ? "Sent" : "Sending" }}
       <template v-if="clicked && !sent">
         <LoadingDot>.</LoadingDot><LoadingDot delay="0.175s">.</LoadingDot
         ><LoadingDot delay="0.25s">.</LoadingDot>
@@ -21,8 +26,9 @@
 
 <script>
 import styled, { keyframes } from "vue-styled-components";
+import { rgba } from "polished";
 
-const animationDurationNumber = 3;
+const animationDurationNumber = 3.25;
 const animationDuration = `${animationDurationNumber}s`;
 
 const buttonSendTextAnimation = keyframes`
@@ -32,15 +38,15 @@ const buttonSendTextAnimation = keyframes`
   }
   10% {
     opacity: 1;
-    transform: translate(-36px, 0);
+    transform: translate(-12px, 0);
   }
   30% {
     opacity: 1;
-    transform: translate(-36px, 0);
+    transform: translate(-12px, 0);
   }
   40% {
     opacity: 0;
-    transform: translate(-36px, 100%);
+    transform: translate(-12px, 100%);
   }
   48% {
     opacity: 0;
@@ -48,11 +54,15 @@ const buttonSendTextAnimation = keyframes`
   }
   50% {
     opacity: 1;
-    transform: translate(-160px, 0);
+    transform: translate(-360px, -160px);
+  }
+  51% {
+    opacity: 1;
+    transform: translate(-12px, -100%);
   }
   70% {
     opacity: 1;
-    transform: translate(-3px, 0);
+    transform: translate(-12px, 0);
   }
 `;
 
@@ -61,10 +71,10 @@ const buttonIconAnimation = keyframes`
     transform: translate(0, 0);
   }
   12% {
-    transform: translate(-40px, 0) scale(0.8, 0.8);
+    transform: translate(-60px, 0) scale(0.8, 0.8);
   }
   35% {
-    transform: translate(-40px, 0) scale(0.8, 0.8);
+    transform: translate(-60px, 0) scale(0.8, 0.8);
   }
   50% {
     transform: translate(200px, 0) scale(1.75, 1.75);
@@ -123,26 +133,27 @@ const StyledButton = styled("button", buttonProps)`
   display: flex;
   align-items: flex-start;
   height: 56px;
-  min-width: 184px;
-  max-width: 184px;
-  padding: 0 1.25rem 0 1rem;
+  min-width: 204px;
+  max-width: 224px;
+  padding: 0 2rem;
   border: 0;
-  border-radius: 0.325rem;
+  border-radius: 28px;
   font-family: "DM Sans", sans-serif;
   font-weight: 500;
   font-size: 1rem;
   background: ${props =>
-    props.deleted ? "#47d79f" : props.clicked ? "#07fde2" : "#000322"};
-  color: ${props => (props.clicked ? "#000322" : "white")};
+    props.sent ? "#6331D8" : props.clicked ? "#6331D8" : "#6331D8"};
+  color: ${rgba("white", 0.85)};
+  box-shadow: 0 11px 15px -7px ${rgba("#a3a5c3", 0.75)};
   cursor: pointer;
   outline: none;
   transition: background 0.25s;
   overflow: hidden;
 
-  &:hover {
+  ${"" /* &:hover {
     color: black;
     ${props => (!props.disabled ? "background: #07fde2;" : "")};
-  }
+  } */}
 
   &:disabled {
     cursor: not-allowed;
@@ -158,7 +169,7 @@ const ButtonSendText = styled("span", buttonProps)`
   margin-left: 0.75rem;
   height: 56px;
   line-height: 56px;
-  transform: translate(${props => (props.sent ? "-3px" : "0")}, 0);
+  transform: translate(${props => (props.sent ? "-12px" : "0")}, 0);
 
   ${props =>
     props.clicked
@@ -171,6 +182,7 @@ const ButtonIcon = styled("i", buttonProps)`
   font-size: 24px;
   line-height: 56px;
   transform: translate(${props => (props.sent ? "-200px" : "0")}, 0);
+  color: ${rgba("white", 0.85)};
 
   ${props =>
     props.clicked
@@ -206,14 +218,14 @@ export default {
 
       setTimeout(() => {
         this.sent = true;
-      }, 1500);
+      }, (animationDurationNumber / 2) * 1000);
 
       setTimeout(() => {
         setTimeout(() => {
           this.sent = false;
           this.clicked = false;
         }, 2000);
-      }, animationDurationNumber * 1024);
+      }, animationDurationNumber * 1000);
     }
   }
 };
