@@ -1,17 +1,16 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#FBFBFF">
-        <StyledSlowMoMessage v-if="false">
+      <Frame background="#ffffff">
+        <StyledSlowMoMessage>
           Now let's see it slow
         </StyledSlowMoMessage>
-        <StyledSlowMoImage :src="require('@/assets/images/slow-motion.png')" />
         <StyledBackground
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top topRightText="#06" />
+        <Top topRightText="#05" />
         <Middle>
-          <FocalInteraction slowMo :style="{ transform: 'scale(1, 1)' }" />
+          <FocalInteraction slowMo />
         </Middle>
         <Bottom />
       </Frame>
@@ -28,9 +27,9 @@
 </template>
 
 <script>
-import styled, { keyframes } from "vue-styled-components";
+import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/underlineButton/Wrapper";
+import FocalInteraction from "@/components/interactions/fillUpTextbox/Wrapper";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -68,34 +67,12 @@ const StyledSlowMoMessage = styled.div`
   color: ${rgba("#090C22", 0.85)};
 `;
 
-const slowMoAnimation = keyframes`
-  0% {
-    opacity: 0
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`;
-
-const StyledSlowMoImage = styled.img`
-  height: 24px;
-  position: absolute;
-  left: 50%;
-  bottom: 100px;
-  transform: translate(-50%, 0);
-  animation: ${slowMoAnimation} 1.5s infinite;
-`;
-
 export default {
   components: {
     FocalInteraction,
     StyledWrapper,
     StyledBackground,
     StyledSlowMoMessage,
-    StyledSlowMoImage,
     Frame,
     FrameWrapper,
     ImageNext,

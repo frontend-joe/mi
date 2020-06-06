@@ -39,6 +39,11 @@
             <AeroplaneSend />
           </StyledSlide>
         </Slide>
+        <Slide>
+          <StyledSlide>
+            <UnderlineButton />
+          </StyledSlide>
+        </Slide>
       </Carousel>
     </Content>
     <Bottombar
@@ -63,6 +68,7 @@ import HamburgerCross from "@/components/interactions/hamburgerCross/Wrapper2";
 import NavbarSlider from "@/components/interactions/navbarSlider/Wrapper";
 import RippleButton from "@/components/interactions/rippleButton/WrapperCss";
 import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
+import UnderlineButton from "@/components/interactions/underlineButton/Wrapper";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
 const StyledWrapper = styled.div`
@@ -96,7 +102,8 @@ export default {
     HamburgerCross,
     NavbarSlider,
     RippleButton,
-    AeroplaneSend
+    AeroplaneSend,
+    UnderlineButton
     // PartyConfirm
   },
   computed: {
@@ -156,8 +163,16 @@ export default {
         {
           collabs: [
             {
-              name: "@mikevdijssel",
+              name: "mikevdijssel",
               image: require("@/assets/images/mike.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "janm_ux",
+              image: require("@/assets/images/jan.png")
             }
           ]
         }

@@ -65,6 +65,10 @@ export default {
         {
           url: "/example-slide",
           text: "Example"
+        },
+        {
+          url: "/dev-slide",
+          text: "Dev"
         }
       ]
     };

@@ -5,26 +5,30 @@
         <StyledBackground
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>r Plane</StyledBackgroundText>
-        <!-- <StyledBackgroundText>Underline</StyledBackgroundText> -->
+        <StyledBackgroundText>Underline</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#05" />
+        <Top topRightText="#06" />
         <Middle horizontalAlign="flex-start">
           <StyledMiddleText>
             <StyledTitle>
               The
-              <StyledTitleLongText>Paper Plane</StyledTitleLongText>
-              Send
+              <StyledTitleLongText>Underline</StyledTitleLongText>
+              Button
             </StyledTitle>
-            <!-- <StyledTitle>The Underline Button</StyledTitle> -->
             <div :style="{ marginBottom: '1.5rem' }">
               <StyledImage :src="require('@/assets/images/joe.png')" />
-              <StyledImage :src="require('@/assets/images/mike.png')" isLast />
+              <StyledImage :src="require('@/assets/images/jan.png')" isLast />
             </div>
-            <StyledNumber>Collab Series #05</StyledNumber>
+            <!-- <StyledNumber>Collab Series #06</StyledNumber> -->
+            <StyledNumber>
+              <StyledNumberIcon class="material-icons-outlined">
+                play_circle_outline
+              </StyledNumberIcon>
+              Animation
+            </StyledNumber>
           </StyledMiddleText>
           <StyledMiddleWrapper>
             <FocalInteraction />
@@ -51,7 +55,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/aeroplaneSend/Wrapper";
+import FocalInteraction from "@/components/interactions/underlineButton/Wrapper";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -98,14 +102,13 @@ const StyledBubble = styled.img`
 `;
 
 const StyledMiddleWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  ${"" /* display: flex;
+  justify-content: center; */}
   position: absolute;
-  right: 0;
+  right: 60px;
   bottom: 0;
-  width: 70%;
-  height: 288px;
+  width: 40%;
+  height: 300px;
 `;
 
 const StyledMiddleText = styled.div`
@@ -116,9 +119,16 @@ const StyledMiddleText = styled.div`
 `;
 
 const StyledNumber = styled.div`
-  color: ${rgba("#090C22", 0.38)};
+  color: ${rgba("#F90549", 0.8)};
   font-size: 1.5rem;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+`;
+
+const StyledNumberIcon = styled.span`
+  font-size: 30px;
+  margin-right: 0.325rem;
 `;
 
 const StyledTitle = styled.div`
@@ -170,6 +180,7 @@ export default {
     StyledMiddleWrapper,
     StyledMiddleText,
     StyledNumber,
+    StyledNumberIcon,
     StyledTitle,
     StyledTitleLongText,
     StyledImage,
