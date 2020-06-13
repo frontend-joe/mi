@@ -1,10 +1,10 @@
 <template>
-  <TopRow>
+  <TopRow :textColor="textColor">
     <Waves :style="{ display: 'none' }" />
     <span>
       Micro Interactions
     </span>
-    <TopRightText v-if="topRightText">
+    <TopRightText :textColor="textColor" v-if="topRightText">
       {{ topRightText }}
     </TopRightText>
   </TopRow>
@@ -14,7 +14,9 @@
 import styled from "vue-styled-components";
 import { rgba } from "polished";
 
-const TopRow = styled.div`
+const scProps = { textColor: String };
+
+const TopRow = styled("div", scProps)`
   position: relative;
   flex: 0 0 75px;
   height: 75px;
@@ -24,7 +26,7 @@ const TopRow = styled.div`
   padding: 0 28px;
   font-size: 20px;
   font-weight: 600;
-  color: ${rgba("#090C22", 0.8)};
+  color: ${props => rgba(props.textColor || "#fff", 0.8)};
 `;
 
 const Waves = styled.div`
@@ -39,12 +41,13 @@ const Waves = styled.div`
   background-repeat: no-repeat;
 `;
 
-const TopRightText = styled.div`
-  color: ${rgba("#090C22", 0.38)};
+const TopRightText = styled("div", scProps)`
+  color: ${props => rgba(props.textColor || "#fff", 0.57)};
 `;
 
 export default {
   props: {
+    textColor: String,
     topRightText: String
   },
   components: {

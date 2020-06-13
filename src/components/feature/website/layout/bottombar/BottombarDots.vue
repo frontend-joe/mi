@@ -1,22 +1,44 @@
 <template>
   <StyledWrapper>
-    <StyledDotButton
-      v-for="dot in dots"
-      :key="dot"
-      @click="$emit('dot-clicked', dot)"
-    >
-      <StyledDot :active="dot === activeIndex" />
-    </StyledDotButton>
+    <StyledDotWrapper>
+      <StyledDotButton
+        v-for="dot in dots"
+        :key="dot"
+        @click="$emit('dot-clicked', dot)"
+      >
+        <StyledDot :active="dot === activeIndex" />
+      </StyledDotButton>
+    </StyledDotWrapper>
+    <StyledSwipeMessage>
+      <StyledSwipeIcon class="material-icons-outlined">
+        arrow_back
+      </StyledSwipeIcon>
+      <span>Swipe</span>
+      <StyledSwipeIcon class="material-icons-outlined">
+        arrow_forward
+      </StyledSwipeIcon>
+    </StyledSwipeMessage>
   </StyledWrapper>
 </template>
 
 <script>
 import styled from "vue-styled-components";
+import { rgba } from "polished";
 
 const StyledWrapper = styled.div`
   display: flex;
   flex: 1;
   justify-content: center;
+`;
+
+const StyledDotWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const StyledDotButton = styled.button`
@@ -44,6 +66,23 @@ const StyledDot = styled("span", dotProps)`
   }
 `;
 
+const StyledSwipeMessage = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: ${rgba("#10132F", 0.38)};
+
+  @media only screen and (min-width: 601px) {
+    display: none;
+  }
+`;
+
+const StyledSwipeIcon = styled.span`
+  margin: 0 0.5rem;
+  font-size: 18px;
+`;
+
 export default {
   props: {
     dots: Array,
@@ -52,7 +91,10 @@ export default {
   components: {
     StyledWrapper,
     StyledDotButton,
-    StyledDot
+    StyledDot,
+    StyledDotWrapper,
+    StyledSwipeMessage,
+    StyledSwipeIcon
   }
 };
 </script>

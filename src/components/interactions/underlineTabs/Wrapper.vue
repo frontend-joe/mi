@@ -28,10 +28,10 @@ import { rgba } from "polished";
 const StyledOuterWrapper = styled.div`
   display: flex;
   align-items: center;
-  background: #6200ee;
+  background: #fff;
   padding: 0 1rem;
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 11px 15px -7px ${rgba("#6200ee", 0.5)};
+  box-shadow: 0 11px 15px -7px ${rgba("#000", 0.25)};
 `;
 
 const StyledWrapper = styled.div`
@@ -42,7 +42,7 @@ const StyledWrapper = styled.div`
   padding: 0;
 `;
 
-const animationDuration = "0.35s";
+const animationDuration = "1.35s";
 
 const buttonWidth = "90px";
 const buttonProps = {
@@ -61,18 +61,22 @@ const StyledButton = styled("button", buttonProps)`
   justify-content: center;
   width: ${buttonWidth};
   height: 74px;
-  color: ${props => rgba("#ffffff", props.active ? 0.85 : 0.45)};
+  color: ${props => rgba("#10132F", props.active ? 0.96 : 0.38)};
   transition: color 0.25s;
+
+  ${"" /* &:hover {
+    ${props => (!props.active ? `color: ${rgba("#10132F", 0.57)}` : "")};
+  } */}
 `;
 
 const StyledButtonUnderline = styled("span", buttonProps)`
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
-  height: 3px;
+  height: 5px;
   width: ${buttonWidth};
   transform: translate(${props => props.index * 100}%, -50%);
-  background: ${rgba("#ffffff", 0.95)};
+  background: ${rgba("#19C8C2", 0.99)};
   transition: transform ${animationDuration};
 `;
 

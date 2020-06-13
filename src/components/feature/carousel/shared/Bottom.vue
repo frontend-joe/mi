@@ -4,12 +4,15 @@
     <SaveIcon :style="{ display: 'none' }" class="material-icons-outlined">
       bookmark_outline
     </SaveIcon>
-    <Arrow :src="require('@/assets/images/arrow.png')" />
+    <ArrowIcon :textColor="textColor" class="material-icons-outlined"
+      >bookmark_outline</ArrowIcon
+    >
   </BottomRow>
 </template>
 
 <script>
 import styled from "vue-styled-components";
+import { rgba } from "polished";
 
 const BottomRow = styled.div`
   flex: 0 0 75px;
@@ -22,11 +25,14 @@ const BottomRow = styled.div`
 `;
 
 const FrontendJoe = styled.img`
-  height: 34px;
+  height: 36px;
 `;
 
-const Arrow = styled.img`
-  height: 24px;
+const arrowProps = { textColor: String };
+
+const ArrowIcon = styled("span", arrowProps)`
+  font-size: 42px;
+  color: ${props => rgba(props.textColor || "white", 0.45)};
 `;
 
 const SaveIcon = styled.i`
@@ -48,6 +54,7 @@ const SaveIcon = styled.i`
 
 export default {
   props: {
+    textColor: String,
     handleColor: String
   },
   data() {
@@ -60,6 +67,9 @@ export default {
       case "grey":
         this.handleUrl = require("@/assets/images/frontendjoe-grey.png");
         break;
+      case "purple":
+        this.handleUrl = require("@/assets/images/frontendjoe-purple.png");
+        break;
       default:
         this.handleUrl = require("@/assets/images/frontendjoe.png");
         break;
@@ -69,7 +79,7 @@ export default {
     BottomRow,
     FrontendJoe,
     SaveIcon,
-    Arrow
+    ArrowIcon
   }
 };
 </script>

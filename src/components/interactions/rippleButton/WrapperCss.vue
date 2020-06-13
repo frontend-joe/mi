@@ -37,6 +37,7 @@ const StyledButton = styled.button`
   width: 190px;
   border: 0;
   border-radius: 32px;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   background: ${backgroundColor};
   color: white;
 

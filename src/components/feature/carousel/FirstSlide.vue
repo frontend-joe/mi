@@ -1,7 +1,7 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#fbfbff">
+      <Frame background="#6E45BD">
         <StyledBackground
           :src="require('@/assets/images/wave-first-slide.png')"
         />
@@ -10,29 +10,29 @@
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#06" />
-        <Middle horizontalAlign="flex-start">
-          <StyledMiddleText>
+        <Top topRightText="#08" />
+        <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
+          <StyledContentLeft>
+            <StyledNumber>#08</StyledNumber>
             <StyledTitle>
               The
               <StyledTitleLongText>Underline</StyledTitleLongText>
-              Button
+              Tabs
             </StyledTitle>
-            <div :style="{ marginBottom: '1.5rem' }">
-              <StyledImage :src="require('@/assets/images/joe.png')" />
-              <StyledImage :src="require('@/assets/images/jan.png')" isLast />
+            <div :style="{ marginBottom: '4px' }">
+              <StyledImage :src="require('@/assets/images/joe-grey.png')" />
+              <StyledImage :src="require('@/assets/images/lia.png')" isLast />
             </div>
-            <!-- <StyledNumber>Collab Series #06</StyledNumber> -->
-            <StyledNumber>
+            <!-- <StyledNumber>
               <StyledNumberIcon class="material-icons-outlined">
                 play_circle_outline
               </StyledNumberIcon>
               Animation
-            </StyledNumber>
-          </StyledMiddleText>
-          <StyledMiddleWrapper>
-            <FocalInteraction />
-          </StyledMiddleWrapper>
+            </StyledNumber> -->
+          </StyledContentLeft>
+          <StyledFocalFrame>
+            <FocalInteraction :style="{ transform: 'scale(0.875)' }" />
+          </StyledFocalFrame>
         </Middle>
         <Bottom />
         <StyledBranding1
@@ -42,6 +42,10 @@
         <StyledBranding2
           v-if="true"
           :src="require('@/assets/images/first-slide-branding2.png')"
+        />
+        <StyledPlayButton
+          v-if="false"
+          :src="require('@/assets/images/play-button.png')"
         />
       </Frame>
       <ImageNext
@@ -55,7 +59,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/underlineButton/Wrapper";
+import FocalInteraction from "@/components/interactions/underlineTabs/Wrapper";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -85,11 +89,11 @@ const StyledBackground = styled.img`
 const StyledBackgroundText = styled.div`
   position: absolute;
   z-index: 0;
-  top: 163px;
+  top: 173px;
   left: -25px;
   font-size: 180px;
   font-weight: 600;
-  color: #f3f4fb;
+  color: ${rgba("black", 0.05)};
   white-space: nowrap;
 `;
 
@@ -101,43 +105,43 @@ const StyledBubble = styled.img`
   height: 120px;
 `;
 
-const StyledMiddleWrapper = styled.div`
+const StyledFocalFrame = styled.div`
   ${"" /* display: flex;
   justify-content: center; */}
   position: absolute;
-  right: 60px;
+  right: 64px;
   bottom: 0;
-  width: 40%;
-  height: 300px;
+  height: 280px;
 `;
 
-const StyledMiddleText = styled.div`
+const StyledContentLeft = styled.div`
   position: relative;
   z-index: 1;
   width: 45%;
-  padding-left: 28px;
+  padding: 19px 28px 0;
 `;
 
 const StyledNumber = styled.div`
-  color: ${rgba("#F90549", 0.8)};
-  font-size: 1.5rem;
+  color: ${rgba("#fff", 0.5)};
+  font-size: 50px;
+  line-height: 52px;
+  letter-spacing: -1px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
+  margin-bottom: 14px;
 `;
 
-const StyledNumberIcon = styled.span`
-  font-size: 30px;
-  margin-right: 0.325rem;
-`;
+// const StyledNumberIcon = styled.span`
+//   font-size: 30px;
+//   margin-right: 0.325rem;
+// `;
 
 const StyledTitle = styled.div`
   font-size: 5.25rem;
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 92px;
   letter-spacing: -1px;
   margin-bottom: 1.5rem;
-  color: ${rgba("#090C22", 0.85)};
+  color: ${rgba("#fff", 0.96)};
 `;
 
 const StyledTitleLongText = styled.div`
@@ -149,9 +153,8 @@ const StyledImage = styled("img", imageProps)`
   border-radius: 50%;
   width: 90px;
   height: 90px;
-  border: 3px solid #f7f7ff;
-
-  transform: translateX(${props => (props.isLast ? "-25px" : "0")});
+  border: 5px solid rgba(255, 255, 255, 0.15);
+  transform: translateX(${props => (props.isLast ? "-35px" : "0")});
 `;
 
 const StyledBranding1 = styled.img`
@@ -170,6 +173,13 @@ const StyledBranding2 = styled.img`
   width: 200px;
 `;
 
+const StyledPlayButton = styled.img`
+  width: 80px;
+  position: absolute;
+  left: 30px;
+  bottom: 74px;
+`;
+
 export default {
   components: {
     FocalInteraction,
@@ -177,15 +187,16 @@ export default {
     StyledBackground,
     StyledBackgroundText,
     StyledBubble,
-    StyledMiddleWrapper,
-    StyledMiddleText,
+    StyledFocalFrame,
+    StyledContentLeft,
     StyledNumber,
-    StyledNumberIcon,
+    // StyledNumberIcon,
     StyledTitle,
     StyledTitleLongText,
     StyledImage,
     StyledBranding1,
     StyledBranding2,
+    StyledPlayButton,
     Frame,
     FrameWrapper,
     ImageNext,

@@ -7,15 +7,25 @@
     @click="$emit('crossbutton-clicked')"
   >
     <StyledIconWrapper>
-      <StyledLine1 class="line-1" :open="open" :iconColor="iconColor" />
-      <StyledLine2 class="line-2" :open="open" :iconColor="iconColor" />
-      <StyledLine3 class="line-3" :open="open" :iconColor="iconColor" />
+      <StyledLine1
+        v-if="true"
+        class="line line-1"
+        :open="open"
+        :iconColor="iconColor"
+      />
+      <StyledLine2
+        v-if="true"
+        class="line-2"
+        :open="open"
+        :iconColor="iconColor"
+      />
+      <StyledLine3 class="line line-3" :open="open" :iconColor="iconColor" />
     </StyledIconWrapper>
   </StyledButton>
 </template>
 
 <script>
-import styled, { keyframes } from "vue-styled-components";
+import styled, { css, keyframes } from "vue-styled-components";
 
 const props = {
   background: String,
@@ -39,12 +49,18 @@ const StyledButton = styled("button", props)`
       ? "0 24px 38px 3px rgba(0, 0, 0, 0.025), 0 9px 46px 8px rgba(0, 0, 0, 0.025), 0 11px 15px -7px rgba(0, 0, 0, 0.025);"
       : ""};
 
-  &:hover .line-1 {
-    ${props => (props.open ? "" : "transform: rotate(0) translate(0, -4px)")};
-  }
+  @media only screen and (min-width: 600px) {
+    .line {
+      transition: transform 0.25s;
+    }
 
-  &:hover .line-3 {
-    ${props => (props.open ? "" : "transform: rotate(0) translate(0, 4px)")};
+    &:hover .line-1 {
+      ${props => (props.open ? "" : "transform: rotate(0) translate(0, -4px)")};
+    }
+
+    &:hover .line-3 {
+      ${props => (props.open ? "" : "transform: rotate(0) translate(0, 4px)")};
+    }
   }
 `;
 
@@ -55,7 +71,7 @@ const StyledIconWrapper = styled.span`
   ${"" /* background: pink; */}
 `;
 
-const StyledLine = styled("span", props)`
+const lineDefaults = css`
   position: absolute;
   width: 36px;
   min-width: 36px;
@@ -63,18 +79,17 @@ const StyledLine = styled("span", props)`
   border-radius: 2px
   left: 0;
   transform-origin: 50% 100%;
-  transition: transform 0.15s;
 `;
 
 const line1AnimationIn = keyframes`
   0% {
-    transform: rotate(0) translate(0, 0);
+    transform: rotate(0deg) translate(0, 0);
   }
   25% {
-    transform: rotate(0) translate(0 , 6px);
+    transform: rotate(0deg) translate(0 , 6px);
   }
   75% {
-    transform: rotate(0) translate(0, 6px);
+    transform: rotate(0deg) translate(0, 6px);
   }
   100% {
     transform: rotate(45deg) translate(4px, 6px);
@@ -86,17 +101,18 @@ const line1AnimationOut = keyframes`
     transform: rotate(45deg) translate(6px, 6px);
   }
   25% {
-    transform: rotate(0) translate(0, 9px);
+    transform: rotate(0deg) translate(0, 9px);
   }
   75% {
-    transform: rotate(0) translate(0, 9px);
+    transform: rotate(0deg) translate(0, 9px);
   }
   100% {
-    transform: rotate(0) translate(0, 0);
+    transform: rotate(0deg) translate(0, 0);
   }
 `;
 
-const StyledLine1 = styled(StyledLine, props)`
+const StyledLine1 = styled("div", props)`
+  ${lineDefaults};
   background: ${props => props.iconColor || "#ffffff"};
   top: 8px;
   ${props =>
@@ -112,25 +128,27 @@ const StyledLine1 = styled(StyledLine, props)`
       : ``};
 `;
 
-const StyledLine2 = styled(StyledLine, props)`
+const StyledLine2 = styled("div", props)`
+  ${lineDefaults};
   background: ${props => props.iconColor || "#ffffff"};
   top: 16px;
   transform: ${props => (props.open ? "rotate(0)" : "rotate(0) ")};
   opacity: ${props => (props.open ? 0 : 1)};
+  transition: opacity 0.25s;
 `;
 
 const line3AnimationIn = keyframes`
   0% {
-    transform: rotate(0) translate(0, 0);
+    transform: rotate(0deg) translate(0, 0);
   }
   25% {
-    transform: rotate(0) translate(0, -8px);
+    transform: rotate(0deg) translate(0, -8px);
   }
   75% {
-    transform: rotate(0) translate(0, -8px);
+    transform: rotate(0deg) translate(0, -8px);
   }
   100% {
-    transform: rotate(-45deg) translate(9px, -8px);
+    transform: rotate(-45deg) translate(8px, -6px);
   }
 `;
 
@@ -139,17 +157,18 @@ const line3AnimationOut = keyframes`
     transform: rotate(-45deg) translate(8px, -6px);
   }
   25% {
-    transform: rotate(0) translate(0, -9px);
+    transform: rotate(0deg) translate(0, -9px);
   }
   75% {
-    transform: rotate(0) translate(0, -9px);
+    transform: rotate(0deg) translate(0, -9px);
   }
   100% {
-    transform: rotate(0) translate(0, 0);
+    transform: rotate(0deg) translate(0, 0);
   }
 `;
 
-const StyledLine3 = styled(StyledLine, props)`
+const StyledLine3 = styled("div", props)`
+  ${lineDefaults};
   background: ${props => props.iconColor || "#ffffff"};
   top: 24px;
   ${props =>

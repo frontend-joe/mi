@@ -1,7 +1,6 @@
 <template>
   <StyledWrapper :valid="valid">
     <StyledTextbox
-      v-model="value"
       :type="showPassword ? 'text' : 'password'"
       placeholder="Password"
     />
@@ -62,7 +61,7 @@ const StyledTextbox = styled.input`
   width: 150px;
 `;
 
-const StyledShowPasswordButton = styled.button`
+const StyledShowPasswordButton = styled("button")`
   padding: 0 0.5rem;
 `;
 
@@ -73,7 +72,6 @@ const StyledButton = styled("button", buttonProps)`
   justify-content: center;
   width: 56px;
   height: 56px;
-  border-radius: 0.5rem;
   background: ${props =>
     props.valid === undefined
       ? backgroundColor
@@ -92,7 +90,7 @@ const StyledButton = styled("button", buttonProps)`
     width: inherit;
     height: inherit;
     background: inherit;
-    transform: scale(${props => (props.submitted ? 10 : 1)});
+    transform: scaleX(${props => (props.submitted ? 10 : 1)});
     transition: transform ${transitionDuration};
   }
 `;
@@ -132,6 +130,7 @@ export default {
       if (this.value === "password") {
         this.valid = true;
       } else {
+        this.attempts++;
         this.valid = false;
       }
 
@@ -144,6 +143,7 @@ export default {
   },
   data() {
     return {
+      attempts: 0,
       value: String,
       valid: undefined,
       submitted: false,

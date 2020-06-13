@@ -4,6 +4,7 @@
     <Content>
       <Carousel
         :navigateTo="navigateTo"
+        v-on:page-change="handlePageChanged"
         :per-page="1"
         :mouseDrag="false"
         :paginationEnabled="false"
@@ -44,6 +45,11 @@
             <UnderlineButton />
           </StyledSlide>
         </Slide>
+        <Slide>
+          <StyledSlide>
+            <FillUpTextbox />
+          </StyledSlide>
+        </Slide>
       </Carousel>
     </Content>
     <Bottombar
@@ -69,6 +75,7 @@ import NavbarSlider from "@/components/interactions/navbarSlider/Wrapper";
 import RippleButton from "@/components/interactions/rippleButton/WrapperCss";
 import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
 import UnderlineButton from "@/components/interactions/underlineButton/Wrapper";
+import FillUpTextbox from "@/components/interactions/fillUpTextbox/Wrapper";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
 const StyledWrapper = styled.div`
@@ -103,12 +110,12 @@ export default {
     NavbarSlider,
     RippleButton,
     AeroplaneSend,
-    UnderlineButton
+    UnderlineButton,
+    FillUpTextbox
     // PartyConfirm
   },
   computed: {
     dots() {
-      console.log(this.slides.map((obj, index) => index));
       return this.slides.map((obj, index) => index);
     }
   },
@@ -123,21 +130,8 @@ export default {
             }
           ]
         },
-        // {
-        //   collabs: [
-        //     {
-        //       name: "@aaroniker",
-        //       image: require("@/assets/images/aaron.png")
-        //     }
-        //   ]
-        // },
-
         {
           collabs: [
-            // {
-            //   name: "@lianascimentto",
-            //   image: require("@/assets/images/lia.png")
-            // },
             {
               name: "bydanromero",
               image: require("@/assets/images/dan.png")
@@ -175,6 +169,14 @@ export default {
               image: require("@/assets/images/jan.png")
             }
           ]
+        },
+        {
+          collabs: [
+            {
+              name: "misaac85",
+              image: require("@/assets/images/miriam.png")
+            }
+          ]
         }
       ],
       navigateTo: 0
@@ -183,6 +185,9 @@ export default {
   methods: {
     handleDotClicked(dot) {
       this.navigateTo = dot;
+    },
+    handlePageChanged(page) {
+      this.navigateTo = page;
     }
   }
 };

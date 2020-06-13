@@ -64,6 +64,10 @@ const buttonSendTextAnimation = keyframes`
     opacity: 1;
     transform: translate(-12px, 0);
   }
+  100% {
+    opacity: 1;
+    transform: translate(-12px, 0);
+  }
 `;
 
 const buttonIconAnimation = keyframes`
@@ -86,6 +90,9 @@ const buttonIconAnimation = keyframes`
     transform: translate(0, 100%) scale(1, 1);
   }
   65% {
+    transform: translate(-160px, 0) scale(1, 1);
+  }
+  100% {
     transform: translate(-160px, 0) scale(1, 1);
   }
 `;
