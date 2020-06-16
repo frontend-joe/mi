@@ -19,6 +19,8 @@ import Sidebar from "@/components/layout/Sidebar";
 import Content from "@/components/layout/Content";
 import Hamburger from "@/components/layout/Hamburger";
 
+import "./assets/css/icofont.min.css";
+
 const StyleWrapper = styled(ThemeProvider)`
   height: 100%;
   flex: 1;

@@ -1,27 +1,27 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#6E45BD">
+      <Frame background="#6546D8">
         <StyledBackground
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Underline</StyledBackgroundText>
+        <StyledBackgroundText>Material</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#08" />
+        <Top topRightText="#10" />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
-            <StyledNumber>#08</StyledNumber>
+            <StyledNumber>#10</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Underline</StyledTitleLongText>
-              Tabs
+              <StyledTitleLongText>Material</StyledTitleLongText>
+              Checkbox
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
               <StyledImage :src="require('@/assets/images/joe-grey.png')" />
-              <StyledImage :src="require('@/assets/images/lia.png')" isLast />
+              <StyledImage :src="require('@/assets/images/abdul.png')" isLast />
             </div>
             <!-- <StyledNumber>
               <StyledNumberIcon class="material-icons-outlined">
@@ -43,6 +43,10 @@
           v-if="true"
           :src="require('@/assets/images/first-slide-branding2.png')"
         />
+        <StyledBrandingBottom
+          v-if="true"
+          :src="require('@/assets/images/first-slide-branding-bottom.png')"
+        />
         <StyledPlayButton
           v-if="false"
           :src="require('@/assets/images/play-button.png')"
@@ -59,7 +63,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/underlineTabs/Wrapper";
+import FocalInteraction from "@/components/interactions/Checkbox";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -109,9 +113,9 @@ const StyledFocalFrame = styled.div`
   ${"" /* display: flex;
   justify-content: center; */}
   position: absolute;
-  right: 64px;
+  right: 160px;
   bottom: 0;
-  height: 280px;
+  height: 273px;
 `;
 
 const StyledContentLeft = styled.div`
@@ -180,6 +184,13 @@ const StyledPlayButton = styled.img`
   bottom: 74px;
 `;
 
+const StyledBrandingBottom = styled.img`
+  position: absolute;
+  left: -108px;
+  bottom: 82px;
+  width: 800px;
+`;
+
 export default {
   components: {
     FocalInteraction,
@@ -196,6 +207,7 @@ export default {
     StyledImage,
     StyledBranding1,
     StyledBranding2,
+    StyledBrandingBottom,
     StyledPlayButton,
     Frame,
     FrameWrapper,
