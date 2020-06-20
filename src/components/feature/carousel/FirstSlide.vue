@@ -3,6 +3,7 @@
     <FrameWrapper>
       <Frame background="#6546D8">
         <StyledBackground
+          v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
         <StyledBackgroundText>Material</StyledBackgroundText>
@@ -97,7 +98,7 @@ const StyledBackgroundText = styled.div`
   left: -25px;
   font-size: 180px;
   font-weight: 600;
-  color: ${rgba("black", 0.05)};
+  color: ${rgba("white", 0.05)};
   white-space: nowrap;
 `;
 
@@ -113,7 +114,7 @@ const StyledFocalFrame = styled.div`
   ${"" /* display: flex;
   justify-content: center; */}
   position: absolute;
-  right: 160px;
+  right: 150px;
   bottom: 0;
   height: 273px;
 `;

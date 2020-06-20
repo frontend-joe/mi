@@ -5,13 +5,16 @@
         <StyledSlowMoMessage v-if="false">
           Now let's see it slow
         </StyledSlowMoMessage>
-        <StyledSlowMoImage :src="require('@/assets/images/slow-motion.png')" />
+        <StyledSlowMoImage
+          v-if="false"
+          :src="require('@/assets/images/slow-motion.png')"
+        />
         <StyledBackground
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top textColor="#10132F" topRightText="#09" />
+        <Top textColor="#10132F" topRightText="#10" />
         <Middle>
-          <FocalInteraction slowMo :style="{ transform: 'scale(1, 1)' }" />
+          <FocalInteraction isDark :style="{ transform: 'scale(1, 1)' }" />
         </Middle>
         <Bottom handleColor="purple" textColor="#10132F" />
       </Frame>
@@ -30,7 +33,7 @@
 <script>
 import styled, { keyframes } from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/CopyButton";
+import FocalInteraction from "@/components/interactions/Checkbox";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

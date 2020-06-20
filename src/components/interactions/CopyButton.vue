@@ -44,6 +44,7 @@ const popupDuration = "1.75s";
 const props = { isHovered: Boolean, isClicked: Boolean };
 
 const StyledWrapper = styled("button", props)`
+  position: relative;
   user-select: none;
   cursor: pointer;
   display: flex;

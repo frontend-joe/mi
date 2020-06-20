@@ -50,6 +50,11 @@
             <FillUpTextbox />
           </StyledSlide>
         </Slide>
+        <Slide>
+          <StyledSlide>
+            <CopyButton />
+          </StyledSlide>
+        </Slide>
       </Carousel>
     </Content>
     <Bottombar
@@ -76,6 +81,7 @@ import RippleButton from "@/components/interactions/rippleButton/WrapperCss";
 import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
 import UnderlineButton from "@/components/interactions/underlineButton/Wrapper";
 import FillUpTextbox from "@/components/interactions/fillUpTextbox/Wrapper";
+import CopyButton from "@/components/interactions/CopyButton";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
 const StyledWrapper = styled.div`
@@ -111,7 +117,8 @@ export default {
     RippleButton,
     AeroplaneSend,
     UnderlineButton,
-    FillUpTextbox
+    FillUpTextbox,
+    CopyButton
     // PartyConfirm
   },
   computed: {
@@ -175,6 +182,14 @@ export default {
             {
               name: "misaac85",
               image: require("@/assets/images/miriam.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "alex.arutuynov",
+              image: require("@/assets/images/alex.png")
             }
           ]
         }
