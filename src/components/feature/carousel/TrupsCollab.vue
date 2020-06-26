@@ -64,7 +64,6 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/OutlineTextbox";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -218,7 +217,6 @@ const StyledBrandingBottom = styled.img`
 
 export default {
   components: {
-    FocalInteraction,
     StyledWrapper,
     StyledBackground,
     StyledBackgroundText,

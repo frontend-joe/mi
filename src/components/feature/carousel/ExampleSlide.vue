@@ -39,7 +39,7 @@
 <script>
 import styled, { keyframes } from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/OutlineTextbox";
+import FocalInteraction from "@/components/interactions/ShadowButton";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

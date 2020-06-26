@@ -1,29 +1,29 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#001429">
+      <Frame background="#41009a">
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Outlined</StyledBackgroundText>
+        <StyledBackgroundText>Shadow</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#12" />
+        <Top topRightText="#13" />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
-            <StyledNumber>#12</StyledNumber>
+            <StyledNumber>#13</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Outlined</StyledTitleLongText>
-              Input
+              <StyledTitleLongText>Shadow</StyledTitleLongText>
+              Button
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
               <StyledImage :src="require('@/assets/images/joe-grey.png')" />
               <StyledImage
-                :src="require('@/assets/images/gabriele.png')"
+                :src="require('@/assets/images/mauricio.png')"
                 isLast
               />
             </div>
@@ -72,7 +72,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/OutlineTextbox";
+import FocalInteraction from "@/components/interactions/ShadowButton";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

@@ -13,7 +13,7 @@
       >
         <Slide>
           <StyledSlide>
-            <HamburgerCross />
+            <HamburgerClose />
           </StyledSlide>
         </Slide>
         <!--
@@ -24,7 +24,7 @@
         </Slide> -->
         <Slide>
           <StyledSlide>
-            <TrashShredderDelete />
+            <TrashcanShredder />
           </StyledSlide>
         </Slide>
         <Slide>
@@ -39,7 +39,7 @@
         </Slide>
         <Slide>
           <StyledSlide>
-            <AeroplaneSend />
+            <PaperPlaneSend />
           </StyledSlide>
         </Slide>
         <Slide>
@@ -49,7 +49,7 @@
         </Slide>
         <Slide>
           <StyledSlide>
-            <FillUpTextbox />
+            <PasswordValidator />
           </StyledSlide>
         </Slide>
         <Slide>
@@ -72,6 +72,11 @@
             <FillUpButton />
           </StyledSlide>
         </Slide>
+        <Slide>
+          <StyledSlide>
+            <OutlinedInput />
+          </StyledSlide>
+        </Slide>
       </Carousel>
     </Content>
     <Bottombar
@@ -91,17 +96,18 @@ import Topbar from "./layout/topbar/Topbar";
 import Content from "./layout/content/Content";
 import Bottombar from "./layout/bottombar/Bottombar";
 
-import TrashShredderDelete from "@/components/interactions/trashShredderDelete/Wrapper";
-import HamburgerCross from "@/components/interactions/hamburgerCross/Wrapper2";
-import NavbarSlider from "@/components/interactions/navbarSlider/Wrapper";
+import TrashcanShredder from "@/components/interactions/trashcanShredder/Wrapper";
+import HamburgerClose from "@/components/interactions/hamburgerClose/Wrapper2";
+import NavbarSlider from "@/components/interactions/NavbarSlider";
 import RippleButton from "@/components/interactions/rippleButton/WrapperCss";
-import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
-import UnderlineButton from "@/components/interactions/underlineButton/Wrapper";
-import FillUpTextbox from "@/components/interactions/fillUpTextbox/Wrapper";
-import UnderlineTabs from "@/components/interactions/underlineTabs/Wrapper";
+import PaperPlaneSend from "@/components/interactions/PaperPlaneSend";
+import UnderlineButton from "@/components/interactions/UnderlineButton";
+import PasswordValidator from "@/components/interactions/PasswordValidator";
+import UnderlineTabs from "@/components/interactions/UnderlineTabs";
 import CopyButton from "@/components/interactions/CopyButton";
 import MaterialCheckbox from "@/components/interactions/MaterialCheckbox";
-import FillUpButton from "@/components/interactions/fillUpButton/Wrapper";
+import FillUpButton from "@/components/interactions/FillUpButton";
+import OutlinedInput from "@/components/interactions/OutlinedInput";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
 const StyledWrapper = styled.div`
@@ -131,17 +137,18 @@ export default {
     Carousel,
     Slide,
     StyledSlide,
-    TrashShredderDelete,
-    HamburgerCross,
+    TrashcanShredder,
+    HamburgerClose,
     NavbarSlider,
     RippleButton,
-    AeroplaneSend,
+    PaperPlaneSend,
     UnderlineButton,
-    FillUpTextbox,
+    PasswordValidator,
     UnderlineTabs,
     CopyButton,
     MaterialCheckbox,
-    FillUpButton
+    FillUpButton,
+    OutlinedInput
     // PartyConfirm
   },
   computed: {
