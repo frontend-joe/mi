@@ -3,6 +3,8 @@
     <Topbar />
     <Content>
       <Carousel
+        :speed="1000"
+        :loop="true"
         :navigateTo="navigateTo"
         v-on:page-change="handlePageChanged"
         :per-page="1"
@@ -52,7 +54,22 @@
         </Slide>
         <Slide>
           <StyledSlide>
+            <UnderlineTabs />
+          </StyledSlide>
+        </Slide>
+        <Slide>
+          <StyledSlide>
             <CopyButton />
+          </StyledSlide>
+        </Slide>
+        <Slide>
+          <StyledSlide>
+            <MaterialCheckbox isDark hideLabel />
+          </StyledSlide>
+        </Slide>
+        <Slide>
+          <StyledSlide>
+            <FillUpButton />
           </StyledSlide>
         </Slide>
       </Carousel>
@@ -81,7 +98,10 @@ import RippleButton from "@/components/interactions/rippleButton/WrapperCss";
 import AeroplaneSend from "@/components/interactions/aeroplaneSend/Wrapper";
 import UnderlineButton from "@/components/interactions/underlineButton/Wrapper";
 import FillUpTextbox from "@/components/interactions/fillUpTextbox/Wrapper";
+import UnderlineTabs from "@/components/interactions/underlineTabs/Wrapper";
 import CopyButton from "@/components/interactions/CopyButton";
+import MaterialCheckbox from "@/components/interactions/MaterialCheckbox";
+import FillUpButton from "@/components/interactions/fillUpButton/Wrapper";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
 const StyledWrapper = styled.div`
@@ -118,7 +138,10 @@ export default {
     AeroplaneSend,
     UnderlineButton,
     FillUpTextbox,
-    CopyButton
+    UnderlineTabs,
+    CopyButton,
+    MaterialCheckbox,
+    FillUpButton
     // PartyConfirm
   },
   computed: {
@@ -188,8 +211,32 @@ export default {
         {
           collabs: [
             {
+              name: "lianascimentto",
+              image: require("@/assets/images/lia.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
               name: "alex.arutuynov",
               image: require("@/assets/images/alex.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "abdulldsgnr",
+              image: require("@/assets/images/abdul.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "janm_ux",
+              image: require("@/assets/images/jan.png")
             }
           ]
         }

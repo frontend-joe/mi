@@ -106,16 +106,8 @@ export default {
       const clientXInButton = clientX - rect.x;
       const clientYInButton = clientY - rect.y;
 
-      //console.log("onClick", event, rect);
-
-      console.log("clientXInButton", clientXInButton);
-      console.log("clientYInButton", clientYInButton);
-
-      // create element
       const rippleButton = document.getElementById("ripple-button");
 
-      // const rippleDomElement = document.createElement("img");
-      // rippleDomElement.className = "ripple-image";
       const rippleDomElement = document.createElement("span");
       rippleDomElement.className = "ripple";
 
@@ -125,11 +117,6 @@ export default {
       rippleDomElement.style.top = clientYInButton + "px";
       rippleDomElement.style.left = clientXInButton + "px";
 
-      // const rippleCenterDomElement = document.createElement("span");
-      // rippleCenterDomElement.className = "ripple-center";
-      //
-      // rippleDomElement.appendChild(rippleCenterDomElement);
-
       const removeFunction = () => {
         rippleButton.removeChild(rippleDomElement);
       };
@@ -138,8 +125,6 @@ export default {
       rippleDomElement.addEventListener("animationend", removeFunction);
 
       rippleButton.appendChild(rippleDomElement);
-
-      // remove element
     }
   }
 };

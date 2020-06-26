@@ -5,6 +5,7 @@ import FirstSlide from "@/components/feature/carousel/FirstSlide";
 import LeoSlide from "@/components/feature/carousel/LeoSlide";
 import ExampleSlide from "@/components/feature/carousel/ExampleSlide";
 import DevSlide from "@/components/feature/carousel/DevSlide";
+import TrupsCollab from "@/components/feature/carousel/TrupsCollab";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/dev-slide",
     name: "DevSlide",
     component: DevSlide
+  },
+  {
+    path: "/trups-collab",
+    name: "TrupsCollab",
+    component: TrupsCollab
   }
   // {
   //   path: "*",

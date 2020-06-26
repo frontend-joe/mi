@@ -12,9 +12,15 @@
         <StyledBackground
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top textColor="#10132F" topRightText="#10" />
+        <Top textColor="#10132F" topRightText="#12" />
         <Middle>
-          <FocalInteraction isDark :style="{ transform: 'scale(1, 1)' }" />
+          <FocalInteraction
+            placeholderColor="rgba(0,0,0,0.38)"
+            outlineColor="#0169DF"
+            backgroundColor="#FBFBFF"
+            textboxColor="rgba(0,0,0,0.75)"
+            :style="{ transform: 'scale(1, 1)' }"
+          />
         </Middle>
         <Bottom handleColor="purple" textColor="#10132F" />
       </Frame>
@@ -33,7 +39,7 @@
 <script>
 import styled, { keyframes } from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/Checkbox";
+import FocalInteraction from "@/components/interactions/OutlineTextbox";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

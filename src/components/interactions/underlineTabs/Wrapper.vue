@@ -42,7 +42,7 @@ const StyledWrapper = styled.div`
   padding: 0;
 `;
 
-const animationDuration = "1.35s";
+const animationDuration = "0.35s";
 
 const buttonWidth = "90px";
 const buttonProps = {

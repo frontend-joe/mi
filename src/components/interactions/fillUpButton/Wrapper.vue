@@ -17,7 +17,7 @@ import styled from "vue-styled-components";
 import { rgba } from "polished";
 
 const transitionDuration = "0.45s";
-const mainColor = "#6457A6";
+const mainColor = "#E34F74";
 
 const StyledWrapper = styled.div``;
 
@@ -30,7 +30,7 @@ const StyledButton = styled.button`
   overflow: hidden;
   width: 200px;
   height: 50px;
-  background: #f8f8fd;
+  background: transparent;
   border: 2px solid ${mainColor};
   border-radius: 0.325rem;
   color: ${rgba(mainColor, 0.85)};

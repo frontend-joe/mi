@@ -38,8 +38,8 @@
 <script>
 import styled, { keyframes } from "vue-styled-components";
 
-const transitionDuration = "1.5s";
-const popupDuration = "1.75s";
+const transitionDuration = "1s";
+const popupDuration = "0.75s";
 
 const props = { isHovered: Boolean, isClicked: Boolean };
 

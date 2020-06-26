@@ -1,7 +1,13 @@
 <template>
-  <StyledWrapper @click="isChecked = !isChecked" :isDark="isDark">
+  <StyledWrapper
+    :style="{ width: hideLabel ? 'auto' : '200px' }"
+    @click="isChecked = !isChecked"
+    :isDark="isDark"
+  >
     <Checkbox :isChecked="isChecked" :borderColor="borderColor" />
-    <CheckboxLabel>{{ isChecked ? "Checked" : "Unchecked" }}</CheckboxLabel>
+    <CheckboxLabel v-if="!hideLabel">
+      {{ isChecked ? "Checked" : "Unchecked" }}
+    </CheckboxLabel>
   </StyledWrapper>
 </template>
 
@@ -18,7 +24,6 @@ const StyledWrapper = styled("button", props)`
   align-items: center;
   color: ${props => (props.isDark ? "#6546D8" : "white")};
   font-weight: 500;
-  width: 200px;
   height: 60px;
 `;
 
@@ -47,7 +52,10 @@ const CheckboxLabel = styled.div`
 `;
 
 export default {
-  props: props,
+  props: {
+    isDark: Boolean,
+    hideLabel: Boolean
+  },
   components: {
     StyledWrapper,
     Checkbox,

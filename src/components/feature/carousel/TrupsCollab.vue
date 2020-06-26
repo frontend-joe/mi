@@ -1,31 +1,28 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#001429">
+      <Frame background="#6901ce">
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Outlined</StyledBackgroundText>
+        <StyledBackgroundText>Highlight</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#12" />
+        <Top topRightText="#16" />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
-            <StyledNumber>#12</StyledNumber>
+            <StyledNumber>#16</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Outlined</StyledTitleLongText>
-              Input
+              <StyledTitleLongText>Highlight</StyledTitleLongText>
+              Link
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
               <StyledImage :src="require('@/assets/images/joe-grey.png')" />
-              <StyledImage
-                :src="require('@/assets/images/gabriele.png')"
-                isLast
-              />
+              <StyledImage :src="require('@/assets/images/trups.png')" isLast />
             </div>
             <!-- <StyledNumber>
               <StyledNumberIcon class="material-icons-outlined">
@@ -34,13 +31,8 @@
               Animation
             </StyledNumber> -->
           </StyledContentLeft>
-          <StyledFocalFrame>
-            <FocalInteraction
-              backgroundColor="#001429"
-              outlineColor="white"
-              textboxColor="white"
-              placeholderColor="rgba(255, 255, 255, 0.5)"
-            />
+          <StyledFocalFrame v-if="false">
+            <FocalInteraction />
           </StyledFocalFrame>
         </Middle>
         <Bottom />
@@ -134,7 +126,6 @@ const StyledFocalFrame = styled.div`
 const StyledContentLeft = styled.div`
   position: relative;
   z-index: 1;
-  width: 45%;
   padding: 19px 28px 0;
 `;
 
@@ -161,8 +152,29 @@ const StyledTitle = styled.div`
   color: ${rgba("#fff", 0.96)};
 `;
 
-const StyledTitleLongText = styled.div`
+const StyledTitleLongText = styled.a`
+  display: block;
+  position: relative;
   white-space: nowrap;
+  color: #e9ecf5;
+  cursor: pointer;
+
+  &:hover::after {
+    transform: scaleY(3.5);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+    height: 10px;
+    width: 100%;
+    background: #ff5a5f;
+    transform-origin: 0% 100%;
+    transition: transform 0.35s;
+  }
 `;
 
 const imageProps = { isLast: Boolean };
