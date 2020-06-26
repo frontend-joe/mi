@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Website from "@/components/feature/website/Wrapper";
 import FirstSlide from "@/components/feature/carousel/FirstSlide";
-import LeoSlide from "@/components/feature/carousel/LeoSlide";
 import ExampleSlide from "@/components/feature/carousel/ExampleSlide";
 import DevSlide from "@/components/feature/carousel/DevSlide";
 import TrupsCollab from "@/components/feature/carousel/TrupsCollab";
@@ -19,11 +18,6 @@ const routes = [
     path: "/first-slide",
     name: "FirstSlide",
     component: FirstSlide
-  },
-  {
-    path: "/leo-slide",
-    name: "Leo",
-    component: LeoSlide
   },
   {
     path: "/example-slide",

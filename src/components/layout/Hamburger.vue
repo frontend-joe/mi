@@ -11,7 +11,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import HamburgerCross from "@/components/interactions/hamburgerCross/CrossButton";
+import HamburgerCross from "@/components/interactions/hamburgerClose/CrossButton";
 
 const StyledWrapper = styled.div`
   position: fixed;

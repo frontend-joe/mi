@@ -74,7 +74,12 @@
         </Slide>
         <Slide>
           <StyledSlide>
-            <OutlinedInput />
+            <OutlinedInput
+              placeholderColor="rgba(0,0,0,0.38)"
+              outlineColor="#0169DF"
+              backgroundColor="#fff"
+              textboxColor="rgba(0,0,0,0.75)"
+            />
           </StyledSlide>
         </Slide>
       </Carousel>
@@ -244,6 +249,14 @@ export default {
             {
               name: "janm_ux",
               image: require("@/assets/images/jan.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "gabrielemalaspina",
+              image: require("@/assets/images/gabriele.png")
             }
           ]
         }
