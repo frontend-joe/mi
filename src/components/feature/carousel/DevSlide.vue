@@ -1,12 +1,9 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#ffffff">
-        <StyledSlowMoMessage>
-          Now let's see it slow
-        </StyledSlowMoMessage>
+      <Frame background="#ecf0f3">
         <StyledBackground
-          :src="require('@/assets/images/wave-example-slide.png')"
+          :src="require('@/assets/images/wave-first-slide.png')"
         />
         <Top topRightText="#05" />
         <Middle>
@@ -28,8 +25,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/Switch";
+import FocalInteraction from "@/components/interactions/NeumorphicSwitch";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -55,24 +51,11 @@ const StyledBackground = styled.img`
   width: 200%;
 `;
 
-const StyledSlowMoMessage = styled.div`
-  position: absolute;
-  top: 130px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: 700;
-  font-size: 1.8rem;
-  text-align: center;
-  white-space: nowrap;
-  color: ${rgba("#090C22", 0.85)};
-`;
-
 export default {
   components: {
     FocalInteraction,
     StyledWrapper,
     StyledBackground,
-    StyledSlowMoMessage,
     Frame,
     FrameWrapper,
     ImageNext,

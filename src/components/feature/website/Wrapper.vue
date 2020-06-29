@@ -82,6 +82,11 @@
             />
           </StyledSlide>
         </Slide>
+        <Slide>
+          <StyledSlide>
+            <ShadowButton />
+          </StyledSlide>
+        </Slide>
       </Carousel>
     </Content>
     <Bottombar
@@ -113,6 +118,7 @@ import CopyButton from "@/components/interactions/CopyButton";
 import MaterialCheckbox from "@/components/interactions/MaterialCheckbox";
 import FillUpButton from "@/components/interactions/FillUpButton";
 import OutlinedInput from "@/components/interactions/OutlinedInput";
+import ShadowButton from "@/components/interactions/ShadowButton";
 // import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
 const StyledWrapper = styled.div`
@@ -153,7 +159,8 @@ export default {
     CopyButton,
     MaterialCheckbox,
     FillUpButton,
-    OutlinedInput
+    OutlinedInput,
+    ShadowButton
     // PartyConfirm
   },
   computed: {
@@ -257,6 +264,14 @@ export default {
             {
               name: "gabrielemalaspina",
               image: require("@/assets/images/gabriele.png")
+            }
+          ]
+        },
+        {
+          collabs: [
+            {
+              name: "mauricio.bucardo",
+              image: require("@/assets/images/mauricio.png")
             }
           ]
         }

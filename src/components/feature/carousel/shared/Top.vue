@@ -24,7 +24,7 @@ const TopRow = styled("div", scProps)`
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: ${props => rgba(props.textColor || "#fff", 0.8)};
 `;
@@ -42,7 +42,8 @@ const Waves = styled.div`
 `;
 
 const TopRightText = styled("div", scProps)`
-  color: ${props => rgba(props.textColor || "#fff", 0.57)};
+  color: ${props =>
+    props.textColor ? rgba(props.textColor, 0.38) : rgba("#fff", 0.57)};
 `;
 
 export default {
