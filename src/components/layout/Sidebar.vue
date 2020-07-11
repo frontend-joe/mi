@@ -59,15 +59,15 @@ export default {
           text: "Website"
         },
         {
-          url: "/first-slide",
+          url: "/insta/first-slide",
           text: "First"
         },
         {
-          url: "/example-slide",
+          url: "/insta/example-slide",
           text: "Example"
         },
         {
-          url: "/dev-slide",
+          url: "/insta/dev-slide",
           text: "Dev"
         }
       ]

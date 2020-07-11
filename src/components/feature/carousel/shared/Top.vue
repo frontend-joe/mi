@@ -2,7 +2,7 @@
   <TopRow :textColor="textColor">
     <Waves :style="{ display: 'none' }" />
     <span>
-      Micro Interactions
+      MI
     </span>
     <TopRightText :textColor="textColor" v-if="topRightText">
       {{ topRightText }}
@@ -24,9 +24,10 @@ const TopRow = styled("div", scProps)`
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 600;
-  color: ${props => rgba(props.textColor || "#fff", 0.8)};
+  color: ${props =>
+    rgba(props.theme.colorText || props.textColor || "#fff", 0.38)};
 `;
 
 const Waves = styled.div`

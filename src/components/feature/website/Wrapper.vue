@@ -1,110 +1,14 @@
 <template>
-  <StyledWrapper>
-    <Topbar />
-    <Content>
-      <Carousel
-        :speed="1000"
-        :loop="true"
-        :navigateTo="navigateTo"
-        v-on:page-change="handlePageChanged"
-        :per-page="1"
-        :mouseDrag="false"
-        :paginationEnabled="false"
-      >
-        <Slide>
-          <StyledSlide>
-            <HamburgerClose />
-          </StyledSlide>
-        </Slide>
-        <!--
-        <Slide>
-          <StyledSlide>
-            <PartyConfirm />
-          </StyledSlide>
-        </Slide> -->
-        <Slide>
-          <StyledSlide>
-            <TrashcanShredder />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <NavbarSlider />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <RippleButton />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <PaperPlaneSend />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <UnderlineButton />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <PasswordValidator />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <UnderlineTabs />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <CopyButton />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <MaterialCheckbox isDark hideLabel />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <FillUpButton />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <OutlinedInput
-              placeholderColor="rgba(0,0,0,0.38)"
-              outlineColor="#0169DF"
-              backgroundColor="#fff"
-              textboxColor="rgba(0,0,0,0.75)"
-            />
-          </StyledSlide>
-        </Slide>
-        <Slide>
-          <StyledSlide>
-            <ShadowButton />
-          </StyledSlide>
-        </Slide>
-      </Carousel>
-    </Content>
-    <Bottombar
-      :dots="dots"
-      :collabs="slides && slides[navigateTo].collabs"
-      :activeIndex="navigateTo"
-      v-on:dot-clicked="handleDotClicked"
-    />
-  </StyledWrapper>
+  <Wrapper>
+    <Mobile :slides="slides" />
+    <Desktop :components="slides" />
+  </Wrapper>
 </template>
 
 <script>
 import styled from "vue-styled-components";
-import { Carousel, Slide } from "vue-carousel";
-
-import Topbar from "./layout/topbar/Topbar";
-import Content from "./layout/content/Content";
-import Bottombar from "./layout/bottombar/Bottombar";
+import Mobile from "./mobile/Mobile";
+import Desktop from "./desktop/Desktop";
 
 import TrashcanShredder from "@/components/interactions/trashcanShredder/Wrapper";
 import HamburgerClose from "@/components/interactions/hamburgerClose/Wrapper2";
@@ -115,192 +19,119 @@ import UnderlineButton from "@/components/interactions/UnderlineButton";
 import PasswordValidator from "@/components/interactions/PasswordValidator";
 import UnderlineTabs from "@/components/interactions/UnderlineTabs";
 import CopyButton from "@/components/interactions/CopyButton";
-import MaterialCheckbox from "@/components/interactions/MaterialCheckbox";
+import MaterialCheckbox from "@/components/interactions/MaterialCheckboxWebsite";
 import FillUpButton from "@/components/interactions/FillUpButton";
-import OutlinedInput from "@/components/interactions/OutlinedInput";
+import OutlinedInput from "@/components/interactions/OutlinedInputWebsite";
 import ShadowButton from "@/components/interactions/ShadowButton";
-// import PartyConfirm from "@/components/interactions/partyConfirm/Wrapper";
 
-const StyledWrapper = styled.div`
-  height: 100%;
+const Wrapper = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-`;
-
-const StyledSlide = styled(Slide)`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export default {
-  name: "App",
   components: {
-    StyledWrapper,
-    Topbar,
-    Content,
-    Bottombar,
-    Carousel,
-    Slide,
-    StyledSlide,
-    TrashcanShredder,
-    HamburgerClose,
-    NavbarSlider,
-    RippleButton,
-    PaperPlaneSend,
-    UnderlineButton,
-    PasswordValidator,
-    UnderlineTabs,
-    CopyButton,
-    MaterialCheckbox,
-    FillUpButton,
-    OutlinedInput,
-    ShadowButton
-    // PartyConfirm
+    Wrapper,
+    Mobile,
+    Desktop
   },
-  computed: {
-    dots() {
-      return this.slides.map((obj, index) => index);
-    }
-  },
-  data: function() {
+  data() {
     return {
       slides: [
         {
-          collabs: [
-            {
-              name: "leeohgonzalez",
-              image: require("@/assets/images/leeo.png")
-            }
-          ]
+          name: "hamburger-close",
+          collab: "leeohgonzalez",
+          image: require("@/assets/images/leeo.png"),
+          component: HamburgerClose,
+          background: "#1b215d"
         },
         {
-          collabs: [
-            {
-              name: "bydanromero",
-              image: require("@/assets/images/dan.png")
-            }
-          ]
+          name: "trashcan-shredder",
+          collab: "bydanromero",
+          image: require("@/assets/images/dan.png"),
+          component: TrashcanShredder,
+          background: "#59bf97"
         },
         {
-          collabs: [
-            {
-              name: "ux.ale",
-              image: require("@/assets/images/ale.png")
-            }
-          ]
+          name: "navbar-slider",
+          collab: "ux.ale",
+          image: require("@/assets/images/ale.png"),
+          component: NavbarSlider,
+          background: "#323553"
         },
         {
-          collabs: [
-            {
-              name: "andrew.eugene",
-              image: require("@/assets/images/eugene.png")
-            }
-          ]
+          name: "ripple-button",
+          collab: "andrew.eugene",
+          image: require("@/assets/images/eugene.png"),
+          component: RippleButton,
+          background: "#1b2650"
         },
         {
-          collabs: [
-            {
-              name: "mikevdijssel",
-              image: require("@/assets/images/mike.png")
-            }
-          ]
+          name: "paper-plane-send",
+          collab: "mikevdijssel",
+          image: require("@/assets/images/mike.png"),
+          component: PaperPlaneSend,
+          background: "#1b2650"
         },
         {
-          collabs: [
-            {
-              name: "janm_ux",
-              image: require("@/assets/images/jan.png")
-            }
-          ]
+          name: "underline-button",
+          collab: "janm_ux",
+          image: require("@/assets/images/jan.png"),
+          component: UnderlineButton,
+          background: "#f8f8fd"
         },
         {
-          collabs: [
-            {
-              name: "misaac85",
-              image: require("@/assets/images/miriam.png")
-            }
-          ]
+          name: "password-validator",
+          collab: "misaac85",
+          image: require("@/assets/images/miriam.png"),
+          component: PasswordValidator,
+          background: "#fbfaff"
         },
         {
-          collabs: [
-            {
-              name: "lianascimentto",
-              image: require("@/assets/images/lia.png")
-            }
-          ]
+          name: "underline-tabs",
+          collab: "lianascimentto",
+          image: require("@/assets/images/lia.png"),
+          component: UnderlineTabs,
+          background: "#6e46bb"
         },
         {
-          collabs: [
-            {
-              name: "alex.arutuynov",
-              image: require("@/assets/images/alex.png")
-            }
-          ]
+          name: "copy-button",
+          collab: "alex.arutuynov",
+          image: require("@/assets/images/alex.png"),
+          component: CopyButton,
+          background: "#262439"
         },
         {
-          collabs: [
-            {
-              name: "abdulldsgnr",
-              image: require("@/assets/images/abdul.png")
-            }
-          ]
+          name: "material-checkbox",
+          collab: "abdulldsgnr",
+          image: require("@/assets/images/abdul.png"),
+          component: MaterialCheckbox,
+          background: "#ebebeb"
         },
         {
-          collabs: [
-            {
-              name: "janm_ux",
-              image: require("@/assets/images/jan.png")
-            }
-          ]
+          name: "fill-up-button",
+          collab: "janm_ux",
+          image: require("@/assets/images/jan.png"),
+          component: FillUpButton,
+          background: "#11141a"
         },
         {
-          collabs: [
-            {
-              name: "gabrielemalaspina",
-              image: require("@/assets/images/gabriele.png")
-            }
-          ]
+          name: "outlined-input",
+          collab: "gabrielemalaspina",
+          image: require("@/assets/images/gabriele.png"),
+          component: OutlinedInput,
+          background: "#001128"
         },
         {
-          collabs: [
-            {
-              name: "mauricio.bucardo",
-              image: require("@/assets/images/mauricio.png")
-            }
-          ]
+          name: "shadow-button",
+          collab: "mauricio.bucardo",
+          image: require("@/assets/images/mauricio.png"),
+          component: ShadowButton,
+          background: "#40009c"
         }
-      ],
-      navigateTo: 0
+      ]
     };
-  },
-  methods: {
-    handleDotClicked(dot) {
-      this.navigateTo = dot;
-    },
-    handlePageChanged(page) {
-      this.navigateTo = page;
-    }
   }
 };
 </script>
-
-<style>
-.VueCarousel {
-  width: 100%;
-  height: 100%;
-}
-
-.VueCarousel-wrapper {
-  height: 100%;
-}
-
-.VueCarousel-inner {
-  height: 100% !important;
-}
-</style>

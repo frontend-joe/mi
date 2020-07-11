@@ -1,7 +1,7 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#ecf0f3">
+      <Frame background="#1D1E2C">
         <StyledBackground
           :src="require('@/assets/images/wave-first-slide.png')"
         />
@@ -25,7 +25,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import FocalInteraction from "@/components/interactions/NeumorphicSwitch";
+import FocalInteraction from "@/components/interactions/ProgressButton";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

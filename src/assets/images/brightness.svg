@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="56" height="56" viewBox="0 0 56 56">
+  <defs>
+    <clipPath id="clip-custom_1">
+      <rect width="56" height="56"/>
+    </clipPath>
+  </defs>
+  <g id="custom_1" data-name="custom – 1" clip-path="url(#clip-custom_1)">
+    <rect width="56" height="56" fill="rgba(255,255,255,0)"/>
+    <g id="Group_6" data-name="Group 6" transform="translate(-1.588)">
+      <g id="Group_5" data-name="Group 5" transform="translate(33.458 56) rotate(180)">
+        <g id="Group_1" data-name="Group 1" transform="translate(-0.446)">
+          <rect id="Rectangle_1" data-name="Rectangle 1" width="6" height="10" rx="3" transform="translate(1.317 46)" fill="#4c506b"/>
+          <rect id="Rectangle_2" data-name="Rectangle 2" width="6" height="10" rx="3" transform="translate(1.317)" fill="#4c506b"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_7" data-name="Group 7" transform="translate(56 -1.588) rotate(90)">
+      <g id="Group_5-2" data-name="Group 5" transform="translate(33.458 56) rotate(180)">
+        <g id="Group_1-2" data-name="Group 1" transform="translate(-0.446)">
+          <rect id="Rectangle_1-2" data-name="Rectangle 1" width="6" height="10" rx="3" transform="translate(1.317 46)" fill="#4c506b"/>
+          <rect id="Rectangle_2-2" data-name="Rectangle 2" width="6" height="10" rx="3" transform="translate(1.317)" fill="#4c506b"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_8" data-name="Group 8" transform="translate(68.721 26.877) rotate(135)">
+      <g id="Group_5-3" data-name="Group 5" transform="translate(33.458 56) rotate(180)">
+        <g id="Group_1-3" data-name="Group 1" transform="translate(-0.446)">
+          <rect id="Rectangle_1-3" data-name="Rectangle 1" width="6" height="10" rx="3" transform="translate(1.317 46)" fill="#4c506b"/>
+          <rect id="Rectangle_2-3" data-name="Rectangle 2" width="6" height="10" rx="3" transform="translate(1.317)" fill="#4c506b"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_9" data-name="Group 9" transform="translate(26.877 -12.721) rotate(45)">
+      <g id="Group_5-4" data-name="Group 5" transform="translate(33.458 56) rotate(180)">
+        <g id="Group_1-4" data-name="Group 1" transform="translate(-0.446)">
+          <rect id="Rectangle_1-4" data-name="Rectangle 1" width="6" height="10" rx="3" transform="translate(1.317 46)" fill="#4c506b"/>
+          <rect id="Rectangle_2-4" data-name="Rectangle 2" width="6" height="10" rx="3" transform="translate(1.317)" fill="#4c506b"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

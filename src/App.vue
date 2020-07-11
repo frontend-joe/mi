@@ -1,5 +1,5 @@
 <template>
-  <StyleWrapper :theme="theme">
+  <StyleWrapper :theme="getTheme">
     <Hamburger
       v-if="env === 'development'"
       :open="sidebarOpen"
@@ -46,7 +46,7 @@ export default {
   },
   data() {
     return {
-      theme: themeDefault,
+      getTheme: themeDefault,
       sidebarOpen: false,
       env: ""
     };
@@ -68,7 +68,12 @@ body {
   font-family: "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+}
+
+@media only screen and (max-width: 992px) {
+  body {
+    overflow: hidden;
+  }
 }
 
 * {

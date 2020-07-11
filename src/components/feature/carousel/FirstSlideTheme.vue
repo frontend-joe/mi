@@ -1,28 +1,36 @@
 <template>
-  <StyledWrapper>
+  <StyledWrapper :theme="getTheme">
     <FrameWrapper>
-      <Frame background="#6901ce">
+      <Frame>
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Highlight</StyledBackgroundText>
+        <StyledBackgroundText :style="{ opacity: darkModeOn ? 1 : 0 }"
+          >Switch</StyledBackgroundText
+        >
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#16" />
+        <Top
+          topRightText="#16"
+          :style="{ opacity: darkModeOn ? 1 : 0, transition: '0.4s' }"
+        />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
             <StyledNumber>#16</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Highlight</StyledTitleLongText>
-              Link
+              <StyledTitleLongText>Switch</StyledTitleLongText>
+              Input
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
               <StyledImage :src="require('@/assets/images/joe-grey.png')" />
-              <StyledImage :src="require('@/assets/images/trups.png')" isLast />
+              <StyledImage
+                :src="require('@/assets/images/thalion.png')"
+                isLast
+              />
             </div>
             <!-- <StyledNumber>
               <StyledNumberIcon class="material-icons-outlined">
@@ -31,20 +39,22 @@
               Animation
             </StyledNumber> -->
           </StyledContentLeft>
-          <StyledFocalFrame v-if="false">
-            <FocalInteraction />
+          <StyledFocalFrame>
+            <FocalInteraction v-on:toggle-dark-mode="toggleDarkMode" />
           </StyledFocalFrame>
         </Middle>
-        <Bottom />
+        <Bottom :style="{ opacity: darkModeOn ? 1 : 0, transition: '0.4s' }" />
         <StyledBranding1
           v-if="false"
           :src="require('@/assets/images/first-slide-branding1.png')"
         />
         <StyledBranding2
+          :style="{ opacity: darkModeOn ? 1 : 0 }"
           v-if="true"
           :src="require('@/assets/images/first-slide-branding2.png')"
         />
         <StyledBrandingBottom
+          :style="{ opacity: darkModeOn ? 1 : 0 }"
           v-if="true"
           :src="require('@/assets/images/first-slide-branding-bottom.png')"
         />
@@ -62,8 +72,9 @@
 </template>
 
 <script>
-import styled from "vue-styled-components";
+import styled, { ThemeProvider } from "vue-styled-components";
 import { rgba } from "polished";
+import FocalInteraction from "@/components/interactions/DarkModeSwitch";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -71,7 +82,7 @@ import Top from "./shared/Top";
 import Bottom from "./shared/Bottom";
 import Middle from "./shared/Middle";
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled(ThemeProvider)`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -97,8 +108,9 @@ const StyledBackgroundText = styled.div`
   left: -25px;
   font-size: 180px;
   font-weight: 600;
-  color: ${rgba("white", 0.05)};
+  color: ${props => rgba(props.theme.colorText, 0.05)};
   white-space: nowrap;
+  transition: 0.1s;
 `;
 
 const StyledBubble = styled.img`
@@ -116,7 +128,7 @@ const StyledFocalFrame = styled.div`
   z-index: 10;
   right: 15%;
   bottom: 0;
-  height: 270px;
+  height: 263px;
   width: 55%;
   display: flex;
   justify-content: center;
@@ -125,16 +137,18 @@ const StyledFocalFrame = styled.div`
 const StyledContentLeft = styled.div`
   position: relative;
   z-index: 1;
+  width: 45%;
   padding: 19px 28px 0;
 `;
 
 const StyledNumber = styled.div`
-  color: ${rgba("#fff", 0.5)};
+  color: ${props => rgba(props.theme.colorText, 0.5)};
   font-size: 50px;
   line-height: 52px;
   letter-spacing: -1px;
   font-weight: 600;
   margin-bottom: 14px;
+  transition: 0.4s;
 `;
 
 // const StyledNumberIcon = styled.span`
@@ -148,32 +162,13 @@ const StyledTitle = styled.div`
   line-height: 92px;
   letter-spacing: -1px;
   margin-bottom: 1.5rem;
-  color: ${rgba("#fff", 0.96)};
+  color: ${props => rgba(props.theme.colorText, 0.96)};
+
+  transition: 0.4s;
 `;
 
-const StyledTitleLongText = styled.a`
-  display: block;
-  position: relative;
+const StyledTitleLongText = styled.div`
   white-space: nowrap;
-  color: #e9ecf5;
-  cursor: pointer;
-
-  &:hover::after {
-    transform: scaleY(3.5);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    bottom: 0;
-    height: 10px;
-    width: 100%;
-    background: #ff5a5f;
-    transform-origin: 0% 100%;
-    transition: transform 0.35s;
-  }
 `;
 
 const imageProps = { isLast: Boolean };
@@ -181,8 +176,9 @@ const StyledImage = styled("img", imageProps)`
   border-radius: 50%;
   width: 90px;
   height: 90px;
-  border: 5px solid rgba(255, 255, 255, 0.15);
+  border: 5px solid ${props => props.theme.colorBorder};
   transform: translateX(${props => (props.isLast ? "-39px" : "0")});
+  transition: border-color 0.4s;
 `;
 
 const StyledBranding1 = styled.img`
@@ -191,14 +187,16 @@ const StyledBranding1 = styled.img`
   right: 120px;
   bottom: 50px;
   width: 100px;
+  transition: 0.4s;
 `;
 
 const StyledBranding2 = styled.img`
   position: absolute;
   z-index: 0;
-  right: -136px;
-  top: 90px;
-  width: 200px;
+  right: -176px;
+  top: 70px;
+  width: 260px;
+  transition: 0.4s;
 `;
 
 const StyledPlayButton = styled.img`
@@ -213,10 +211,12 @@ const StyledBrandingBottom = styled.img`
   left: -108px;
   bottom: 82px;
   width: 800px;
+  transition: 0.4s;
 `;
 
 export default {
   components: {
+    FocalInteraction,
     StyledWrapper,
     StyledBackground,
     StyledBackgroundText,
@@ -238,6 +238,33 @@ export default {
     Top,
     Middle,
     Bottom
+  },
+  methods: {
+    toggleDarkMode() {
+      this.darkModeOn = !this.darkModeOn;
+    }
+  },
+  data() {
+    return {
+      darkModeOn: true
+    };
+  },
+  computed: {
+    getTheme() {
+      if (this.darkModeOn) {
+        return {
+          colorBackground: "#040404",
+          colorText: "white",
+          colorBorder: rgba("#fff", 0.15)
+        };
+      } else {
+        return {
+          colorBackground: "#f7f7fd",
+          colorText: "#10132F",
+          colorBorder: rgba("#10132F", 0.25)
+        };
+      }
+    }
   }
 };
 </script>

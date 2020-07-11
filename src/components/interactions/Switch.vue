@@ -21,7 +21,7 @@ const MaterialSwitch = styled.label`
   }
 
   & > input:checked + .slider {
-    background-color: #2196f3;
+    background-color: #068cfa;
   }
 
   & > input:checked + .slider::before {

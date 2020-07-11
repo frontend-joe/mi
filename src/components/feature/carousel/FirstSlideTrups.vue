@@ -1,31 +1,28 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#3a0b82">
+      <Frame background="#6901ce">
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Password</StyledBackgroundText>
+        <StyledBackgroundText>Highlight</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#17" />
+        <Top topRightText="#15" />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
-            <StyledNumber>#17</StyledNumber>
+            <StyledNumber>#15</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Password</StyledTitleLongText>
-              <StyledTitleLongText>Validator II</StyledTitleLongText>
+              <StyledTitleLongText>Highlight</StyledTitleLongText>
+              Link
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
               <StyledImage :src="require('@/assets/images/joe-grey.png')" />
-              <StyledImage
-                :src="require('@/assets/images/miriam.png')"
-                isLast
-              />
+              <StyledImage :src="require('@/assets/images/trups.png')" isLast />
             </div>
             <!-- <StyledNumber>
               <StyledNumberIcon class="material-icons-outlined">
@@ -34,7 +31,7 @@
               Animation
             </StyledNumber> -->
           </StyledContentLeft>
-          <StyledFocalFrame>
+          <StyledFocalFrame v-if="false">
             <FocalInteraction />
           </StyledFocalFrame>
         </Middle>
@@ -67,7 +64,6 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/PasswordValidator2";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -120,7 +116,7 @@ const StyledFocalFrame = styled.div`
   z-index: 10;
   right: 15%;
   bottom: 0;
-  height: 273px;
+  height: 270px;
   width: 55%;
   display: flex;
   justify-content: center;
@@ -129,7 +125,6 @@ const StyledFocalFrame = styled.div`
 const StyledContentLeft = styled.div`
   position: relative;
   z-index: 1;
-  width: 45%;
   padding: 19px 28px 0;
 `;
 
@@ -156,8 +151,29 @@ const StyledTitle = styled.div`
   color: ${rgba("#fff", 0.96)};
 `;
 
-const StyledTitleLongText = styled.div`
+const StyledTitleLongText = styled.a`
+  display: block;
+  position: relative;
   white-space: nowrap;
+  color: #e9ecf5;
+  cursor: pointer;
+
+  &:hover::after {
+    transform: scaleY(3.5);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 5px;
+    bottom: 0;
+    height: 10px;
+    width: calc(100% - 7px);
+    background: #ff5a5f;
+    transform-origin: 0% 100%;
+    transition: transform 0.35s;
+  }
 `;
 
 const imageProps = { isLast: Boolean };
@@ -180,9 +196,9 @@ const StyledBranding1 = styled.img`
 const StyledBranding2 = styled.img`
   position: absolute;
   z-index: 0;
-  right: -176px;
-  top: 70px;
-  width: 260px;
+  right: -136px;
+  top: 90px;
+  width: 200px;
 `;
 
 const StyledPlayButton = styled.img`
@@ -201,7 +217,6 @@ const StyledBrandingBottom = styled.img`
 
 export default {
   components: {
-    FocalInteraction,
     StyledWrapper,
     StyledBackground,
     StyledBackgroundText,

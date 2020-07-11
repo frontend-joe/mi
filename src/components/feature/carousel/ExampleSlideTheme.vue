@@ -1,5 +1,5 @@
 <template>
-  <StyledWrapper>
+  <StyledWrapper :theme="getTheme">
     <FrameWrapper>
       <Frame background="#FBFBFF">
         <StyledSlowMoMessage v-if="false">
@@ -10,13 +10,17 @@
           :src="require('@/assets/images/slow-motion.png')"
         />
         <StyledBackground
+          v-if="false"
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top textColor="#10132F" topRightText="#17" />
+        <Top
+          :style="{ opacity: darkModeOn ? 1 : 0, transition: '0.4s' }"
+          topRightText="#16"
+        />
         <Middle>
-          <FocalInteraction :style="{ transform: 'scale(1, 1)' }" />
+          <FocalInteraction v-on:toggle-dark-mode="toggleDarkMode" />
         </Middle>
-        <Bottom handleColor="purple" textColor="#10132F" />
+        <Bottom :style="{ opacity: darkModeOn ? 1 : 0, transition: '0.4s' }" />
       </Frame>
       <ImagePrev
         v-if="false"
@@ -31,9 +35,9 @@
 </template>
 
 <script>
-import styled, { keyframes } from "vue-styled-components";
+import styled, { keyframes, ThemeProvider } from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/PasswordValidator2";
+import FocalInteraction from "@/components/interactions/DarkModeSwitch";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -42,7 +46,7 @@ import Top from "./shared/Top";
 import Bottom from "./shared/Bottom";
 import Middle from "./shared/Middle";
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled(ThemeProvider)`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -106,6 +110,33 @@ export default {
     Top,
     Middle,
     Bottom
+  },
+  methods: {
+    toggleDarkMode() {
+      this.darkModeOn = !this.darkModeOn;
+    }
+  },
+  data() {
+    return {
+      darkModeOn: true
+    };
+  },
+  computed: {
+    getTheme() {
+      if (this.darkModeOn) {
+        return {
+          colorBackground: "#040404",
+          colorText: "white",
+          colorBorder: rgba("#fff", 0.15)
+        };
+      } else {
+        return {
+          colorBackground: "#f7f7fd",
+          colorText: "#10132F",
+          colorBorder: rgba("#10132F", 0.25)
+        };
+      }
+    }
   }
 };
 </script>

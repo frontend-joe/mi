@@ -1,10 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Website from "@/components/feature/website/Wrapper";
+import WebsiteDetail from "@/components/feature/website/desktop/Detail";
 import FirstSlide from "@/components/feature/carousel/FirstSlide";
 import ExampleSlide from "@/components/feature/carousel/ExampleSlide";
 import DevSlide from "@/components/feature/carousel/DevSlide";
-import TrupsCollab from "@/components/feature/carousel/TrupsCollab";
 
 Vue.use(VueRouter);
 
@@ -12,27 +12,30 @@ const routes = [
   {
     path: "/",
     name: "Website",
-    component: Website
+    component: Website,
+    children: [
+      {
+        path: ":name",
+        name: "WebsiteDetail",
+        props: true,
+        component: WebsiteDetail
+      }
+    ]
   },
   {
-    path: "/first-slide",
+    path: "/insta/first-slide",
     name: "FirstSlide",
     component: FirstSlide
   },
   {
-    path: "/example-slide",
+    path: "/insta/example-slide",
     name: "ExampleSlide",
     component: ExampleSlide
   },
   {
-    path: "/dev-slide",
+    path: "/insta/dev-slide",
     name: "DevSlide",
     component: DevSlide
-  },
-  {
-    path: "/trups-collab",
-    name: "TrupsCollab",
-    component: TrupsCollab
   }
   // {
   //   path: "*",
@@ -42,7 +45,10 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode: "history"
+  mode: "history",
+  scrollBehavior() {
+    return { x: undefined, y: undefined };
+  }
 });
 
 export default router;

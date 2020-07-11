@@ -1,19 +1,12 @@
 <template>
   <StyledWrapper>
-    <!-- <StyledImageWrapper content="@lianascimentto" v-tippy>
-      <StyledImage :src="liaImage" />
-    </StyledImageWrapper>
-    <StyledImageWrapper content="@bydanromero" v-tippy>
-      <StyledImage :src="danImage" />
-    </StyledImageWrapper> -->
-
     <StyledImageWrapper
       v-for="collab in collabs"
-      :key="collab.name"
-      :content="`@${collab.name}`"
+      :key="collab.collab"
+      :content="`@${collab.collab}`"
       v-tippy
     >
-      <a target="_blank" :href="`https://www.instagram.com/${collab.name}`">
+      <a target="_blank" :href="`https://www.instagram.com/${collab.collab}`">
         <StyledImage :src="collab.image" />
       </a>
     </StyledImageWrapper>

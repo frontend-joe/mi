@@ -14,10 +14,12 @@ const Frame = styled("div", frameProps)`
   overflow: hidden;
   width: 600px;
   height: 750px;
-  background: ${props => props.background || "transparent"};
+  background: ${props =>
+    props.theme.colorBackground || props.background || "transparent"};
   border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+  transition: background 0.4s;
 `;
 export default {
   props: frameProps,

@@ -1,6 +1,6 @@
 <template>
   <StyledWrapper
-    :style="{ width: hideLabel ? 'auto' : '200px' }"
+    :style="{ width: hideLabel ? '60px' : '200px' }"
     @click="isChecked = !isChecked"
     :isDark="isDark"
   >

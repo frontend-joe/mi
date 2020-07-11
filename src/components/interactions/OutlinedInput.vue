@@ -1,6 +1,10 @@
 <template>
   <Wrapper>
-    <Outline :outlineColor="outlineColor" class="outline" :focused="focused" />
+    <Outline
+      :outlineColor="outlineColor"
+      class="outline"
+      :isFocused="focused"
+    />
     <TextboxWrapper :backgroundColor="backgroundColor">
       <Textbox
         type="text"
@@ -35,7 +39,7 @@ const scProps = {
   placeholderColor: String,
   backgroundColor: String,
   outlineColor: String,
-  focused: Boolean,
+  isFocused: Boolean,
   notEmpty: Boolean
 };
 
@@ -55,11 +59,11 @@ const Outline = styled("div", scProps)`
   width: 100%;
   height: 100%;
   background: ${props =>
-    props.focused
+    props.isFocused
       ? rgba(props.outlineColor, 1)
       : rgba(props.outlineColor, 0.8)};
   border-radius: 9px;
-  ${props => (props.focused ? "transform: scale(1.010, 1.04)" : "")};
+  ${props => (props.isFocused ? "transform: scale(1.010, 1.04)" : "")};
   transition: transform ${transitionDuration}, background ${transitionDuration};
 `;
 
@@ -91,7 +95,7 @@ const ClearButton = styled("button", scProps)`
   top: 16px;
   right: 14px;
   color: ${props => rgba(props.outlineColor, 0.5)};
-  opacity: ${props => (props.focused && props.notEmpty ? 1 : 0)}
+  opacity: ${props => (props.isFocused && props.notEmpty ? 1 : 0)}
   transition: opacity ${transitionDuration}, color ${transitionDuration};
 
   &:hover {
