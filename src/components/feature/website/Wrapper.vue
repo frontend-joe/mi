@@ -24,7 +24,7 @@ import FillUpButton from "@/components/interactions/FillUpButton";
 import OutlinedInput from "@/components/interactions/OutlinedInputWebsite";
 import ShadowButton from "@/components/interactions/ShadowButton";
 import PulsingBadge from "@/components/interactions/pulsingBadge/Navbar";
-import HighlightLink from "@/components/interactions/highlightButton/HighlightButton";
+import HighlightLink from "@/components/interactions/HighlightLink";
 import SwitchInput from "@/components/interactions/SwitchInput";
 import PasswordValidator2 from "@/components/interactions/PasswordValidator2";
 import ProgressButton from "@/components/interactions/ProgressButton";
@@ -59,7 +59,7 @@ export default {
           collab: "bydanromero",
           image: require("@/assets/images/dan.png"),
           component: TrashcanShredder,
-          background: "#59bf97",
+          background: "#4f616f",
           githubUrl: "trashcanShredder/Wrapper.vue"
         },
         {
@@ -68,7 +68,7 @@ export default {
           collab: "ux.ale",
           image: require("@/assets/images/ale.png"),
           component: NavbarSlider,
-          background: "#323553",
+          background: "#d6d6da",
           githubUrl: "NavbarSlider.vue"
         },
         {
@@ -77,6 +77,7 @@ export default {
           collab: "andrew.eugene",
           image: require("@/assets/images/eugene.png"),
           component: RippleButton,
+          componentProps: { buttonId: "list-ripple" },
           background: "#1b2650",
           githubUrl: "rippleButton/WrapperCss.vue"
         },
@@ -105,7 +106,7 @@ export default {
           image: require("@/assets/images/miriam.png"),
           component: PasswordValidator,
           background: "#fbfaff",
-          githubUrl: "PasswordValidator"
+          githubUrl: "PasswordValidator.vue"
         },
         {
           id: 8,
@@ -176,8 +177,8 @@ export default {
           collab: "trupsfolio",
           image: require("@/assets/images/trups.png"),
           component: HighlightLink,
-          background: "#59bf97",
-          githubUrl: "highlightButton/HighlightButton.vue"
+          background: "#6701ce",
+          githubUrl: "HighlightLink.vue"
         },
         {
           id: 16,
@@ -185,8 +186,8 @@ export default {
           collab: "thalion_pb",
           image: require("@/assets/images/thalion.png"),
           component: SwitchInput,
-          background: "#59bf97",
-          githubUrl: "SwitchInput"
+          background: "#5d5d6d",
+          githubUrl: "SwitchInput.vue"
         },
         {
           id: 17,
@@ -194,7 +195,7 @@ export default {
           collab: "misaac85",
           image: require("@/assets/images/miriam.png"),
           component: PasswordValidator2,
-          background: "#59bf97",
+          background: "#3a0b80",
           githubUrl: "PasswordValidator2.vue"
         },
         {
@@ -203,7 +204,7 @@ export default {
           collab: "mikevdijssel",
           image: require("@/assets/images/mike.png"),
           component: ProgressButton,
-          background: "#59bf97",
+          background: "#03010e",
           githubUrl: "ProgressButton.vue"
         }
       ]

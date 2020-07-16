@@ -62,7 +62,7 @@ const PulsingBadge = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   top: -3px;
   right: 4px;
   width: 12px;

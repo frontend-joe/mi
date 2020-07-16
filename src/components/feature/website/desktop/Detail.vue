@@ -14,9 +14,7 @@
           The <br />
           {{ interactionTitle }}
         </InteractionTitle>
-        <Collabs v-tippy :content="`Collab with @${collabInsta}`">
-          <CollabImage :src="collabImage" />
-        </Collabs>
+        <DetailCollabs :collabImage="collabImage" :collabInsta="collabInsta" />
       </HeaderRow>
       <CodeTitle v-if="false">
         Vuejs Code
@@ -36,6 +34,7 @@
 import styled, { keyframes } from "vue-styled-components";
 import { component as VueCodeHighlight } from "vue-code-highlight";
 import VuePerfectScrollbar from "vue-perfect-scrollbar";
+import DetailCollabs from "./DetailCollabs";
 
 const Wrapper = styled.div`
   display: flex;
@@ -104,19 +103,14 @@ const headerAnimation = keyframes`
 const HeaderRow = styled("div", detailProps)`
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #ebebeb;
   ${props => (props.open ? `animation: ${headerAnimation} 2s` : "")};
 `;
 
 const InteractionNumber = styled.div`
-  position: absolute;
-  top: 3rem;
-  right: 3rem;
-  line-height: 1.15;
-  font-size: 2.5rem;
+  line-height: 1.5;
+  font-size: 2rem;
   font-weight: 700;
   text-transform: capitalize;
   letter-spacing: -3px;
@@ -130,7 +124,7 @@ const InteractionTitle = styled.div`
   font-weight: 700;
   text-transform: capitalize;
   letter-spacing: -3px;
-  margin-right: 3rem;
+  margin-right: 2rem;
 `;
 
 const CodeTitle = styled.div`
@@ -172,21 +166,6 @@ const CodeWrapper = styled(VuePerfectScrollbar)`
   min-height: 0;
 `;
 
-const Collabs = styled.div`
-  flex: 0 0 auto;
-`;
-
-const collabProps = { isFirst: Boolean };
-const CollabImage = styled("img", collabProps)`
-  position: relative;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 3px solid #ebebeb;
-
-  ${props => (props.isFirst ? "z-index: 0; transform: translateX(24px)" : "")};
-`;
-
 export default {
   props: {
     open: Boolean,
@@ -209,8 +188,7 @@ export default {
     CodeAnimation,
     CodeWrapper,
     CodeTitle,
-    CollabImage,
-    Collabs
+    DetailCollabs
   }
 };
 </script>

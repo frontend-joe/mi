@@ -7,7 +7,7 @@
         />
         <Top topRightText="#05" />
         <Middle>
-          <FocalInteraction slowMo />
+          <FocalInteraction buttonId="test" />
         </Middle>
         <Bottom />
       </Frame>
@@ -25,7 +25,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import FocalInteraction from "@/components/interactions/ProgressButtonSimple";
+import FocalInteraction from "@/components/interactions/rippleButton/WrapperCss";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

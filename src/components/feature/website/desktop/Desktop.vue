@@ -1,12 +1,43 @@
 <template>
   <Wrapper>
-    <Frame v-for="c in components" :key="c.name" :background="c.background">
-      <FrameName class="frame-name"> The {{ c.name }} </FrameName>
-      <component :is="c.component"></component>
-      <ViewCodeButton :background="c.background" :isActive="isActive(c.name)">
-        <router-link :to="{ path: `/${c.name}` }">
+    <Frame
+      @click="viewCode(c.name)"
+      v-for="c in components"
+      :key="c.name"
+      :background="c.background"
+    >
+      <FrameHeader class="frame-header">
+        <FrameNumber>#{{ c.id }}</FrameNumber>
+        <DetailName :detailName="c.name" />
+        <FrameCollab
+          v-tippy
+          :content="`collab with ${c.collab}`"
+          :src="c.image"
+        />
+      </FrameHeader>
+      <FrameComponent>
+        <div @click="event => event.stopPropagation()">
+          <component v-bind="c.componentProps" :is="c.component"></component>
+        </div>
+      </FrameComponent>
+
+      <ViewCodeText class="viewcode-text">
+        <span
+          class="material-icons-outlined"
+          :style="{ marginRight: '0.75rem' }"
+          >code</span
+        >
+        View Code
+      </ViewCodeText>
+
+      <ViewCodeButton
+        class="viewcode-button"
+        :background="c.background"
+        :isActive="isActive(c.name)"
+      >
+        <!-- <router-link v-if="!detailOpen" :to="{ path: `/${c.name}` }">
           View Code
-        </router-link>
+        </router-link> -->
 
         <ViewCodeSvg
           :isActive="isActive(c.name)"
@@ -45,6 +76,7 @@
 import styled, { keyframes } from "vue-styled-components";
 import axios from "axios";
 import Detail from "./Detail";
+import DetailName from "./DetailName";
 
 const wrapperProps = { detailOpen: Boolean };
 
@@ -55,25 +87,6 @@ const Wrapper = styled("div", wrapperProps)`
   @media (min-width: ${props => props.theme.screenWidthMd}) {
     display: flex;
     flex-wrap: wrap;
-  }
-`;
-
-const frameProps = { background: String };
-
-const Frame = styled("div", frameProps)`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  flex: 0 0 50%;
-  height: 500px;
-  max-height: 600px;
-  min-height: 600px;
-  background: ${props => props.background};
-
-  &:hover .frame-name {
-    opacity: 1;
   }
 `;
 
@@ -124,14 +137,70 @@ const DetailFrame = styled("div", detailProps)`
       : ""};
 `;
 
-const FrameName = styled.div`
-  color: white;
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+const frameProps = { background: String };
+
+const Frame = styled("div", frameProps)`
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  flex: 0 0 50%;
+  max-height: 500px;
+  min-height: 500px;
+  background: ${props => props.background};
+
+  &:hover .frame-header,
+  &:hover .viewcode-text {
+    opacity: 1;
+  }
+
+  @media (min-width: ${props => props.theme.screenWidthXl}) {
+    max-height: 700px;
+    min-height: 700px;
+  }
+
+  @media (min-width: ${props => props.theme.screenWidthXxl}) {
+    max-height: 900px;
+    min-height: 900px;
+  }
+`;
+
+const FrameHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
   opacity: 0;
-  transition: opacity 0.25s;
+  padding: 0 3rem;
+  font-size: 1.5rem;
+
+  transition: opacity 0.35s;
+`;
+
+const FrameNumber = styled.div`
+  width: 40px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.38);
+`;
+
+const FrameCollab = styled.img`
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  padding: 2px;
+  border-radius: 50%;
+`;
+
+const FrameComponent = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 80px;
 `;
 
 const viewCodeProps = { isActive: Boolean, background: String };
@@ -139,12 +208,23 @@ const viewCodeProps = { isActive: Boolean, background: String };
 const ViewCodeButton = styled("div", viewCodeProps)`
   position: absolute;
   z-index: 2;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+`;
 
-  & > a {
-    color: pink;
+const ViewCodeText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+  font-size: 1.5rem;
+  opacity: 0;
+
+  & > span {
+    font-size: 36px;
   }
 `;
 
@@ -193,10 +273,15 @@ export default {
     Frame,
     DetailFrame,
     Detail,
-    FrameName,
+    DetailName,
+    FrameHeader,
+    FrameComponent,
+    FrameNumber,
+    FrameCollab,
     ViewCodeButton,
     ViewCodeSvg,
     ViewCodeCircle,
+    ViewCodeText,
     BackButton
   },
   data() {
@@ -205,7 +290,10 @@ export default {
       activeItemColor: "transparent",
       activeComponent: undefined,
       activeItemCode: "",
-      activeItemCollab: ""
+      activeItemCollab: "",
+      activeItemCollabImage: "",
+      activeItemCollabInsta: "",
+      activeItemNumber: 0
     };
   },
   computed: {
@@ -235,6 +323,9 @@ export default {
     isActive(name) {
       return name === this.$route.params.name;
     },
+    viewCode(name) {
+      this.$router.push({ path: `/${name}` });
+    },
     loadInteraction() {
       this.activeItemName = this.$route.params.name;
 
@@ -250,9 +341,6 @@ export default {
 
       axios
         .get(
-          // `https://api.github.com/users/vuezy/mi/blob/master/src/components/interactions/${activeItem.githubUrl}`,
-          // `https://api.github.com/repos/vuezy/mi/contents/src/components/interactions/${activeItem.githubUrl}`,
-          // `https://api.github.com/repos/vuezy/mi/contents/src/components/interactions/${activeItem.githubUrl}`,
           `https://raw.githubusercontent.com/vuezy/mi/master/src/components/interactions/${activeItem.githubUrl}`,
           { crossdomain: true }
         )

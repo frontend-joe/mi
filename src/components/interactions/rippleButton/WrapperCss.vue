@@ -1,5 +1,5 @@
 <template>
-  <StyledButton id="ripple-button" class="ripple-button" @click="onClick">
+  <StyledButton :id="buttonId" class="ripple-button" @click="onClick">
     <StyledButtonText>Ripple Button</StyledButtonText>
   </StyledButton>
 </template>
@@ -91,13 +91,30 @@ const StyledButtonText = styled.span`
 `;
 
 export default {
+  props: {
+    buttonId: {
+      type: String,
+      default: "ripple-button"
+    }
+  },
   components: {
     StyledButton,
     StyledButtonText
   },
   methods: {
+    getScrollParent(node) {
+      if (node == null) {
+        return null;
+      }
+
+      if (node.scrollHeight > node.clientHeight) {
+        return node;
+      } else {
+        return this.getScrollParent(node.parentNode);
+      }
+    },
     onClick(event) {
-      // get mouse position
+      const rippleButton = document.getElementById(this.buttonId);
 
       const rect = event.target.getBoundingClientRect();
       const clientX = event.clientX;
@@ -105,8 +122,6 @@ export default {
 
       const clientXInButton = clientX - rect.x;
       const clientYInButton = clientY - rect.y;
-
-      const rippleButton = document.getElementById("ripple-button");
 
       const rippleDomElement = document.createElement("span");
       rippleDomElement.className = "ripple";

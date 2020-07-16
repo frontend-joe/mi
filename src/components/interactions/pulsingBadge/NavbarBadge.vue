@@ -110,7 +110,7 @@ const pulseAnimation = keyframes`
 
 const PulsingBadge = styled.div`
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   top: -5px;
   right 6px;
   width: 10px;
