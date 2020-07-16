@@ -1,43 +1,44 @@
 <template>
-  <OuterWrapper :detailOpen="detailOpen">
-    <Wrapper>
-      <Frame v-for="c in components" :key="c.name" :background="c.background">
-        <FrameName class="frame-name"> The {{ c.name }} </FrameName>
-        <component :is="c.component"></component>
-        <ViewCodeButton :background="c.background" :isActive="isActive(c.name)">
-          <router-link :to="{ path: `/${c.name}` }">
-            View Code
-          </router-link>
-
-          <ViewCodeSvg
-            :isActive="isActive(c.name)"
-            width="64"
-            height="64"
-            :zIndex="2"
-          >
-            <ViewCodeCircle :background="c.background" r="22" cx="32" cy="32" />
-          </ViewCodeSvg>
-        </ViewCodeButton>
-      </Frame>
-      <DetailFrame :activeItemName="activeItemName" :open="detailOpen">
-        <Detail
-          :interactionTitle="interactionTitle"
-          :interactionNumber="activeComponent ? activeComponent.id : 0"
-          :activeItemNumber="activeItemNumber"
-          :code="activeItemCode"
-          :activeComponent="activeComponent"
-        />
-      </DetailFrame>
-      <BackButton
-        background="red"
-        :isActive="$route.params.name && $route.params.name.length > 0"
-      >
-        <router-link class="material-icons-outlined" :to="{ path: `/` }">
-          arrow_back
+  <Wrapper>
+    <Frame v-for="c in components" :key="c.name" :background="c.background">
+      <FrameName class="frame-name"> The {{ c.name }} </FrameName>
+      <component :is="c.component"></component>
+      <ViewCodeButton :background="c.background" :isActive="isActive(c.name)">
+        <router-link :to="{ path: `/${c.name}` }">
+          View Code
         </router-link>
-      </BackButton>
-    </Wrapper>
-  </OuterWrapper>
+
+        <ViewCodeSvg
+          :isActive="isActive(c.name)"
+          width="64"
+          height="64"
+          :zIndex="2"
+        >
+          <ViewCodeCircle :background="c.background" r="22" cx="32" cy="32" />
+        </ViewCodeSvg>
+      </ViewCodeButton>
+    </Frame>
+    <DetailFrame :activeItemName="activeItemName" :open="detailOpen">
+      <Detail
+        :open="detailOpen"
+        :interactionTitle="interactionTitle"
+        :interactionNumber="activeComponent ? activeComponent.id : 0"
+        :activeItemNumber="activeItemNumber"
+        :code="activeItemCode"
+        :activeComponent="activeComponent"
+        :collabImage="activeItemCollabImage"
+        :collabInsta="activeItemCollabInsta"
+      />
+    </DetailFrame>
+    <BackButton
+      background="red"
+      :isActive="$route.params.name && $route.params.name.length > 0"
+    >
+      <router-link class="material-icons-outlined" :to="{ path: `/` }">
+        arrow_back
+      </router-link>
+    </BackButton>
+  </Wrapper>
 </template>
 
 <script>
@@ -46,10 +47,6 @@ import axios from "axios";
 import Detail from "./Detail";
 
 const wrapperProps = { detailOpen: Boolean };
-
-const OuterWrapper = styled("div", wrapperProps)`
-  ${props => (props.detailOpen ? "overflow: visible; max-height: 100vh;" : "")};
-`;
 
 const Wrapper = styled("div", wrapperProps)`
   display: none;
@@ -169,7 +166,7 @@ const BackButton = styled("div", viewCodeProps)`
   z-index: 20;
   top: 3rem;
   left: 3rem;
-  transform: translateX(${props => (props.isActive ? "0" : "-80px")});
+  transform: translateX(${props => (props.isActive ? "0" : "-110px")});
   transition: transform 0.3s linear;
 
   & > a {
@@ -182,7 +179,7 @@ const BackButton = styled("div", viewCodeProps)`
     border-radius: 50%;
     background: white;
     color: black;
-    transform: scale(${props => (props.isActive ? "1" : "0")});
+    transform: scale(${props => (props.isActive ? "1" : "0.65")});
     transition: transform 0.3s linear;
   }
 `;
@@ -192,7 +189,6 @@ export default {
     components: Array
   },
   components: {
-    OuterWrapper,
     Wrapper,
     Frame,
     DetailFrame,
@@ -208,7 +204,8 @@ export default {
       activeItemName: undefined,
       activeItemColor: "transparent",
       activeComponent: undefined,
-      activeItemCode: ""
+      activeItemCode: "",
+      activeItemCollab: ""
     };
   },
   computed: {
@@ -248,6 +245,8 @@ export default {
       this.activeComponent = activeItem.component;
       this.activeItemColor = activeItem.background;
       this.activeItemNumber = activeItem.id;
+      this.activeItemCollabImage = activeItem.image;
+      this.activeItemCollabInsta = activeItem.collab;
 
       axios
         .get(
