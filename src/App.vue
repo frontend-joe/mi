@@ -20,10 +20,12 @@ import Content from "@/components/layout/Content";
 import Hamburger from "@/components/layout/Hamburger";
 
 import "./assets/css/icofont.min.css";
+import "./assets/css/vue-code-highlight.css";
 
 const StyleWrapper = styled(ThemeProvider)`
   height: 100%;
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 `;
@@ -60,6 +62,11 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 body {

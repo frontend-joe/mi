@@ -25,7 +25,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import FocalInteraction from "@/components/interactions/ProgressButton";
+import FocalInteraction from "@/components/interactions/ProgressButtonSimple";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

@@ -1,31 +1,28 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#3a0b82">
+      <Frame background="#04030F">
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Password</StyledBackgroundText>
+        <StyledBackgroundText>Progress</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#17" />
+        <Top topRightText="#18" />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
-            <StyledNumber>#17</StyledNumber>
+            <StyledNumber>#18</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Password</StyledTitleLongText>
-              <StyledTitleLongText>Validator II</StyledTitleLongText>
+              <StyledTitleLongText>Progress</StyledTitleLongText>
+              <StyledTitleLongText>Button</StyledTitleLongText>
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
               <StyledImage :src="require('@/assets/images/joe-grey.png')" />
-              <StyledImage
-                :src="require('@/assets/images/miriam.png')"
-                isLast
-              />
+              <StyledImage :src="require('@/assets/images/mike.png')" isLast />
             </div>
             <!-- <StyledNumber>
               <StyledNumberIcon class="material-icons-outlined">
@@ -67,7 +64,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/PasswordValidator2";
+import FocalInteraction from "@/components/interactions/ProgressButton";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

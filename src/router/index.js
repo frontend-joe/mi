@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Website from "@/components/feature/website/Wrapper";
-import WebsiteDetail from "@/components/feature/website/desktop/Detail";
 import FirstSlide from "@/components/feature/carousel/FirstSlide";
 import ExampleSlide from "@/components/feature/carousel/ExampleSlide";
 import DevSlide from "@/components/feature/carousel/DevSlide";
@@ -17,8 +16,7 @@ const routes = [
       {
         path: ":name",
         name: "WebsiteDetail",
-        props: true,
-        component: WebsiteDetail
+        props: true
       }
     ]
   },

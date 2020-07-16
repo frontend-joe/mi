@@ -3,7 +3,7 @@
     <FrameWrapper>
       <Frame background="#FBFBFF">
         <StyledSlowMoMessage v-if="false">
-          Now let's see it slow
+          Part I Complete
         </StyledSlowMoMessage>
         <StyledSlowMoImage
           v-if="false"
@@ -12,9 +12,9 @@
         <StyledBackground
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top textColor="#10132F" topRightText="#17" />
+        <Top textColor="#10132F" topRightText="#18" />
         <Middle>
-          <FocalInteraction :style="{ transform: 'scale(1, 1)' }" />
+          <FocalInteraction :style="{ transform: 'scale(2)' }" />
         </Middle>
         <Bottom handleColor="purple" textColor="#10132F" />
       </Frame>
@@ -33,7 +33,7 @@
 <script>
 import styled, { keyframes } from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/PasswordValidator2";
+import FocalInteraction from "@/components/interactions/ProgressButtonSimple";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -61,6 +61,7 @@ const StyledBackground = styled.img`
 
 const StyledSlowMoMessage = styled.div`
   position: absolute;
+  z-index: 1;
   top: 130px;
   left: 50%;
   transform: translateX(-50%);
@@ -68,7 +69,7 @@ const StyledSlowMoMessage = styled.div`
   font-size: 1.8rem;
   text-align: center;
   white-space: nowrap;
-  color: ${rgba("#090C22", 0.85)};
+  color: ${rgba("#090C22", 0.38)};
 `;
 
 const slowMoAnimation = keyframes`

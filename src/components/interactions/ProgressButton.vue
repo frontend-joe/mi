@@ -190,7 +190,7 @@ const RoundButton = styled("button", styleProps)`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  cursor: ${props => (props.isClicked ? "wait" : "pointer")};
+  cursor: ${props => (props.isClicked ? "pointer" : "pointer")};
   background: ${props =>
     props.isComplete ? buttonColorComplete : buttonColor};
 

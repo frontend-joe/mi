@@ -40,13 +40,16 @@ export default {
     return {
       slides: [
         {
+          id: 1,
           name: "hamburger-close",
           collab: "leeohgonzalez",
           image: require("@/assets/images/leeo.png"),
           component: HamburgerClose,
-          background: "#1b215d"
+          background: "#1b215d",
+          githubUrl: "hamburgerClose/Wrapper2.vue"
         },
         {
+          id: 2,
           name: "trashcan-shredder",
           collab: "bydanromero",
           image: require("@/assets/images/dan.png"),
@@ -54,6 +57,7 @@ export default {
           background: "#59bf97"
         },
         {
+          id: 3,
           name: "navbar-slider",
           collab: "ux.ale",
           image: require("@/assets/images/ale.png"),
@@ -61,6 +65,7 @@ export default {
           background: "#323553"
         },
         {
+          id: 4,
           name: "ripple-button",
           collab: "andrew.eugene",
           image: require("@/assets/images/eugene.png"),
@@ -68,6 +73,7 @@ export default {
           background: "#1b2650"
         },
         {
+          id: 5,
           name: "paper-plane-send",
           collab: "mikevdijssel",
           image: require("@/assets/images/mike.png"),
@@ -75,6 +81,7 @@ export default {
           background: "#1b2650"
         },
         {
+          id: 6,
           name: "underline-button",
           collab: "janm_ux",
           image: require("@/assets/images/jan.png"),
@@ -82,6 +89,7 @@ export default {
           background: "#f8f8fd"
         },
         {
+          id: 7,
           name: "password-validator",
           collab: "misaac85",
           image: require("@/assets/images/miriam.png"),
