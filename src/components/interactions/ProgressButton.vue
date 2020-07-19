@@ -86,7 +86,7 @@ const Wrapper = styled.div`
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  transform: scale(2);
+  transform: scale(1.65);
 `;
 
 const Progress = styled("div", styleProps)`

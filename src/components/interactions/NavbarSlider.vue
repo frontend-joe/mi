@@ -111,8 +111,6 @@ export default {
   },
   methods: {
     toggleNav(index) {
-      console.log("nodeEnv", process.env.NODE_ENV);
-
       this.items.forEach((item, i) => {
         if (index === i) {
           item.active = true;

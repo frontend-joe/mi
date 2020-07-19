@@ -1,12 +1,14 @@
 <template>
   <Wrapper>
-    <Mobile :slides="slides" />
-    <Desktop :components="slides" />
+    <Mobile v-if="$vssWidth <= 992" :slides="slides" />
+    <Desktop v-if="$vssWidth > 992" :components="slides" />
   </Wrapper>
 </template>
 
 <script>
 import styled from "vue-styled-components";
+import VueScreenSize from "vue-screen-size";
+
 import Mobile from "./mobile/Mobile";
 import Desktop from "./desktop/Desktop";
 
@@ -30,7 +32,7 @@ import PasswordValidator2 from "@/components/interactions/PasswordValidator2";
 import ProgressButton from "@/components/interactions/ProgressButton";
 
 const Wrapper = styled.div`
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 `;
@@ -41,6 +43,7 @@ export default {
     Mobile,
     Desktop
   },
+  mixins: [VueScreenSize.VueScreenSizeMixin],
   data() {
     return {
       slides: [
@@ -50,7 +53,7 @@ export default {
           collab: "leeohgonzalez",
           image: require("@/assets/images/leeo.png"),
           component: HamburgerClose,
-          background: "#1b215d",
+          background: "#4f57ad",
           githubUrl: "hamburgerClose/CrossButton.vue"
         },
         {
@@ -59,7 +62,7 @@ export default {
           collab: "bydanromero",
           image: require("@/assets/images/dan.png"),
           component: TrashcanShredder,
-          background: "#4f616f",
+          background: "#1E064B",
           githubUrl: "trashcanShredder/Wrapper.vue"
         },
         {
@@ -68,7 +71,7 @@ export default {
           collab: "ux.ale",
           image: require("@/assets/images/ale.png"),
           component: NavbarSlider,
-          background: "#d6d6da",
+          background: "#65A9CD",
           githubUrl: "NavbarSlider.vue"
         },
         {
@@ -78,7 +81,7 @@ export default {
           image: require("@/assets/images/eugene.png"),
           component: RippleButton,
           componentProps: { buttonId: "list-ripple" },
-          background: "#1b2650",
+          background: "#354286",
           githubUrl: "rippleButton/WrapperCss.vue"
         },
         {
@@ -87,7 +90,7 @@ export default {
           collab: "mikevdijssel",
           image: require("@/assets/images/mike.png"),
           component: PaperPlaneSend,
-          background: "#1b2650",
+          background: "#2c204a",
           githubUrl: "PaperPlaneSend.vue"
         },
         {
@@ -96,7 +99,7 @@ export default {
           collab: "janm_ux",
           image: require("@/assets/images/jan.png"),
           component: UnderlineButton,
-          background: "#f8f8fd",
+          background: "#9d9ddc",
           githubUrl: "UnderlineButton.vue"
         },
         {
@@ -105,7 +108,7 @@ export default {
           collab: "misaac85",
           image: require("@/assets/images/miriam.png"),
           component: PasswordValidator,
-          background: "#fbfaff",
+          background: "#a0b6da",
           githubUrl: "PasswordValidator.vue"
         },
         {
@@ -123,7 +126,7 @@ export default {
           collab: "alex.arutuynov",
           image: require("@/assets/images/alex.png"),
           component: CopyButton,
-          background: "#262439",
+          background: "#691bda",
           githubUrl: "CopyButton.vue"
         },
         {
@@ -132,7 +135,7 @@ export default {
           collab: "abdulldsgnr",
           image: require("@/assets/images/abdul.png"),
           component: MaterialCheckbox,
-          background: "#ebebeb",
+          background: "#beadff",
           githubUrl: "MaterialCheckbox.vue"
         },
         {
@@ -141,7 +144,7 @@ export default {
           collab: "janm_ux",
           image: require("@/assets/images/jan.png"),
           component: FillUpButton,
-          background: "#11141a",
+          background: "#313d56",
           githubUrl: "FillUpButton.vue"
         },
         {
@@ -150,7 +153,7 @@ export default {
           collab: "gabrielemalaspina",
           image: require("@/assets/images/gabriele.png"),
           component: OutlinedInput,
-          background: "#001128",
+          background: "#5681b1",
           githubUrl: "OutlinedInput.vue"
         },
         {
@@ -159,7 +162,7 @@ export default {
           collab: "mauricio.bucardo",
           image: require("@/assets/images/mauricio.png"),
           component: ShadowButton,
-          background: "#40009c",
+          background: "#5018a2",
           githubUrl: "ShadowButton.vue"
         },
         {
@@ -168,7 +171,7 @@ export default {
           collab: "bydanromero",
           image: require("@/assets/images/dan.png"),
           component: PulsingBadge,
-          background: "#59bf97",
+          background: "#5ba789",
           githubUrl: "pulsingBadge/NavbarBadge.vue"
         },
         {
@@ -186,7 +189,7 @@ export default {
           collab: "thalion_pb",
           image: require("@/assets/images/thalion.png"),
           component: SwitchInput,
-          background: "#5d5d6d",
+          background: "#38384c",
           githubUrl: "SwitchInput.vue"
         },
         {
@@ -204,7 +207,7 @@ export default {
           collab: "mikevdijssel",
           image: require("@/assets/images/mike.png"),
           component: ProgressButton,
-          background: "#03010e",
+          background: "#292735",
           githubUrl: "ProgressButton.vue"
         }
       ]

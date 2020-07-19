@@ -41,13 +41,12 @@ const StyledDot = styled("span", dotProps)`
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 2px solid
-    ${props => (props.active ? props.theme.colorPrimary : "#d4d4d4")};
   margin: 0;
-  background: ${props => (props.active ? props.theme.colorPrimary : "#d4d4d4")};
+  background: ${props =>
+    props.active ? props.theme.colorPrimary : "rgba(255, 255, 255, 0.15)"};
 
   ${props =>
-    props.active ? "transform: scale(1, 1);" : "transform: scale(0.625,0.625)"};
+    props.active ? "transform: scale(1, 1);" : "transform: scale(0.725,0.725)"};
 
   transition: transform 0.25s;
 

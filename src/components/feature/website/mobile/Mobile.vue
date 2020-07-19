@@ -12,7 +12,7 @@
     <Topbar />
     <Content>
       <Carousel
-        :speed="1000"
+        :speed="450"
         :loop="true"
         :navigateTo="navigateTo"
         v-on:page-change="handlePageChanged"
@@ -21,13 +21,14 @@
         :paginationEnabled="false"
       >
         <Slide v-for="(c, index) in slides" :key="index">
-          <StyledSlide>
+          <StyledSlide :background="c.background">
             <component :is="c.component"></component>
           </StyledSlide>
         </Slide>
       </Carousel>
     </Content>
     <Bottombar
+      v-if="false"
       :dots="dots"
       :collabs="slides && [slides[navigateTo]]"
       :activeIndex="navigateTo"
@@ -46,25 +47,30 @@ import Content from "./content/Content";
 import Bottombar from "./bottombar/Bottombar";
 
 const StyledWrapper = styled.div`
-  height: 100%;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
+  align-self: stretch;
 
-  @media (min-width: ${props => props.theme.screenWidthMd}) {
+  ${"" /* @media (min-width: ${props => props.theme.screenWidthMd}) {
     padding: 0 2rem;
     display: none;
-  }
+  } */}
 `;
 
-const StyledSlide = styled(Slide)`
+const styleProps = { background: String };
+
+const StyledSlide = styled("div", styleProps)`
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  flex: 1;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: ${props => props.background || "transparent"};
 `;
 
 const StyledSwipeMessage = styled.div`
@@ -126,6 +132,10 @@ export default {
 
 <style>
 .VueCarousel {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 1000;

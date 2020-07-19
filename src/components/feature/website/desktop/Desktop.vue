@@ -1,74 +1,79 @@
 <template>
   <Wrapper>
-    <Frame
-      @click="viewCode(c.name)"
-      v-for="c in components"
-      :key="c.name"
-      :background="c.background"
-    >
-      <FrameHeader class="frame-header">
-        <FrameNumber>#{{ c.id }}</FrameNumber>
-        <DetailName :detailName="c.name" />
-        <FrameCollab
-          v-tippy
-          :content="`collab with ${c.collab}`"
-          :src="c.image"
-        />
-      </FrameHeader>
-      <FrameComponent>
-        <div @click="event => event.stopPropagation()">
-          <component v-bind="c.componentProps" :is="c.component"></component>
-        </div>
-      </FrameComponent>
-
-      <ViewCodeText class="viewcode-text">
-        <span
-          class="material-icons-outlined"
-          :style="{ marginRight: '0.75rem' }"
-          >code</span
-        >
-        View Code
-      </ViewCodeText>
-
-      <ViewCodeButton
-        class="viewcode-button"
+    <Topbar />
+    <Frames>
+      <Frame
+        @click="viewCode(c.name)"
+        v-for="c in components"
+        :key="c.name"
         :background="c.background"
-        :isActive="isActive(c.name)"
       >
-        <!-- <router-link v-if="!detailOpen" :to="{ path: `/${c.name}` }">
+        <FrameHeader class="frame-header">
+          <FrameNumber v-if="false">#{{ c.id }}</FrameNumber>
+          <DetailName :detailName="c.name" />
+          <FrameCollab
+            v-if="false"
+            v-tippy
+            :content="`collab with ${c.collab}`"
+            :src="c.image"
+          />
+        </FrameHeader>
+        <FrameComponent>
+          <div @click="event => event.stopPropagation()">
+            <component v-bind="c.componentProps" :is="c.component"></component>
+          </div>
+        </FrameComponent>
+
+        <ViewCodeText class="viewcode-text">
+          <span
+            class="material-icons-outlined"
+            :style="{ marginRight: '0.75rem' }"
+            >code</span
+          >
+          View Code
+        </ViewCodeText>
+
+        <ViewCodeButton
+          class="viewcode-button"
+          :background="c.background"
+          :isActive="isActive(c.name)"
+        >
+          <!-- <router-link v-if="!detailOpen" :to="{ path: `/${c.name}` }">
           View Code
         </router-link> -->
 
-        <ViewCodeSvg
-          :isActive="isActive(c.name)"
-          width="64"
-          height="64"
-          :zIndex="2"
-        >
-          <ViewCodeCircle :background="c.background" r="22" cx="32" cy="32" />
-        </ViewCodeSvg>
-      </ViewCodeButton>
-    </Frame>
-    <DetailFrame :activeItemName="activeItemName" :open="detailOpen">
-      <Detail
-        :open="detailOpen"
-        :interactionTitle="interactionTitle"
-        :interactionNumber="activeComponent ? activeComponent.id : 0"
-        :activeItemNumber="activeItemNumber"
-        :code="activeItemCode"
-        :activeComponent="activeComponent"
-        :collabImage="activeItemCollabImage"
-        :collabInsta="activeItemCollabInsta"
-      />
-    </DetailFrame>
-    <BackButton
-      background="red"
-      :isActive="$route.params.name && $route.params.name.length > 0"
-    >
-      <router-link class="material-icons-outlined" :to="{ path: `/` }">
-        arrow_back
-      </router-link>
-    </BackButton>
+          <ViewCodeSvg
+            :isActive="isActive(c.name)"
+            width="64"
+            height="64"
+            :zIndex="2"
+          >
+            <ViewCodeCircle :background="c.background" r="22" cx="32" cy="32" />
+          </ViewCodeSvg>
+        </ViewCodeButton>
+      </Frame>
+      <DetailFrame :activeItemName="activeItemName" :open="detailOpen">
+        <Detail
+          :open="detailOpen"
+          :interactionTitle="interactionTitle"
+          :interactionNumber="activeComponent ? activeComponent.id : 0"
+          :activeItemNumber="activeItemNumber"
+          :code="activeItemCode"
+          :activeComponent="activeComponent"
+          :collabImage="activeItemCollabImage"
+          :collabInsta="activeItemCollabInsta"
+        />
+      </DetailFrame>
+      <BackButton
+        :background="activeItemColor"
+        :isActive="$route.params.name && $route.params.name.length > 0"
+      >
+        <router-link class="material-icons-outlined" :to="{ path: `/` }">
+          arrow_back
+        </router-link>
+      </BackButton>
+      <AppFooter />
+    </Frames>
   </Wrapper>
 </template>
 
@@ -77,17 +82,22 @@ import styled, { keyframes } from "vue-styled-components";
 import axios from "axios";
 import Detail from "./Detail";
 import DetailName from "./DetailName";
+import Topbar from "./Topbar";
+import AppFooter from "./Footer";
 
 const wrapperProps = { detailOpen: Boolean };
 
-const Wrapper = styled("div", wrapperProps)`
-  display: none;
-  overflow-x: hidden;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+`;
 
-  @media (min-width: ${props => props.theme.screenWidthMd}) {
-    display: flex;
-    flex-wrap: wrap;
-  }
+const Frames = styled("div", wrapperProps)`
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  padding-top: 56px;
 `;
 
 const detailAnimationIn = keyframes`
@@ -172,11 +182,11 @@ const FrameHeader = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 100px;
   opacity: 0;
   padding: 0 3rem;
-  font-size: 1.5rem;
+  font-size: 0.875rem;
 
   transition: opacity 0.35s;
 `;
@@ -200,7 +210,6 @@ const FrameComponent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 80px;
 `;
 
 const viewCodeProps = { isActive: Boolean, background: String };
@@ -220,11 +229,12 @@ const ViewCodeText = styled.div`
   height: 120px;
   color: rgba(255, 255, 255, 0.75);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 0.875rem;
   opacity: 0;
+  transition: opacity 0.35s;
 
   & > span {
-    font-size: 36px;
+    font-size: 26px;
   }
 `;
 
@@ -258,7 +268,7 @@ const BackButton = styled("div", viewCodeProps)`
     font-size: 2.5rem;
     border-radius: 50%;
     background: white;
-    color: black;
+    color: ${props => props.background};
     transform: scale(${props => (props.isActive ? "1" : "0.65")});
     transition: transform 0.3s linear;
   }
@@ -270,6 +280,9 @@ export default {
   },
   components: {
     Wrapper,
+    Frames,
+    Topbar,
+    AppFooter,
     Frame,
     DetailFrame,
     Detail,
@@ -305,9 +318,7 @@ export default {
     }
   },
   watch: {
-    $route(to, from) {
-      console.log("route changed", from.path);
-
+    $route(to) {
       if (to.path === "/" && this.activeItemName) {
         setTimeout(() => {
           this.activeItemColor = "transparent";
@@ -347,7 +358,7 @@ export default {
         .then(response => {
           // handle success
           this.activeItemCode = response.data;
-          console.log(response);
+          // console.log(response);
         })
         .catch(function(error) {
           // handle error

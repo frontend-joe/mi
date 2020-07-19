@@ -27,6 +27,7 @@ const StyledButtonWrapper = styled.div`
 
 const StyledButton = styled.button`
   position: relative;
+  z-index: 1;
   overflow: hidden;
   width: 200px;
   height: 50px;
@@ -49,6 +50,7 @@ const StyledButton = styled.button`
   &::after {
     content: "";
     position: absolute;
+    z-index: 2;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -92,7 +94,7 @@ const Button3 = styled(StyledButton)`
 
 const ButtonText = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: 3;
 `;
 
 export default {

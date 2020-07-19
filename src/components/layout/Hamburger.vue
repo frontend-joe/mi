@@ -16,7 +16,7 @@ import HamburgerCross from "@/components/interactions/hamburgerClose/CrossButton
 const StyledWrapper = styled.div`
   position: fixed;
   z-index: 5;
-  top: 0;
+  bottom: 0;
   left: 0;
 `;
 

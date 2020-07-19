@@ -151,7 +151,7 @@ const StyledButton = styled("button", buttonProps)`
   background: ${props =>
     props.sent ? "#6331D8" : props.clicked ? "#6331D8" : "#6331D8"};
   color: ${rgba("white", 0.85)};
-  box-shadow: 0 11px 15px -7px ${rgba("#a3a5c3", 0.75)};
+  box-shadow: 0 11px 15px -7px ${rgba("#fff", 0.05)};
   cursor: pointer;
   outline: none;
   transition: background 0.25s;

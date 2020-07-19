@@ -10,6 +10,7 @@ import styled from "vue-styled-components";
 
 const Wrapper = styled.div`
   position: relative;
+  z-index: 1;
 
   &:hover .highlight {
     transform: scaleY(3.5);

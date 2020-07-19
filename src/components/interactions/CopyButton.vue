@@ -51,6 +51,7 @@ const StyledWrapper = styled("button", props)`
   align-items: center;
   overflow: hidden;
   border-radius: 1.5rem;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   padding: 1rem 2rem 1rem 1.25rem;
   background: white;
   font-weight: 700;

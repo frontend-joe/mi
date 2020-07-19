@@ -119,8 +119,6 @@ export default {
     copyText() {
       this.copied = true;
 
-      console.log("copied", this.copied);
-
       setTimeout(() => {
         this.copied = false;
       }, 2000);

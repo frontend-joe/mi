@@ -35,6 +35,7 @@ const buttonProps = { valid: Boolean, submitted: Boolean };
 
 const StyledWrapper = styled("div", buttonProps)`
   position: relative;
+  z-index: 1;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -67,6 +68,7 @@ const StyledShowPasswordButton = styled("button")`
 
 const StyledButton = styled("button", buttonProps)`
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,8 +127,6 @@ export default {
   },
   methods: {
     onClick() {
-      console.log(this.value);
-
       if (this.value === "password") {
         this.valid = true;
       } else {

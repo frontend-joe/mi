@@ -6,7 +6,7 @@
 import styled from "vue-styled-components";
 
 const Wrapper = styled.div`
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.65);
   font-weight: 700;
   text-transform: capitalize;
 `;

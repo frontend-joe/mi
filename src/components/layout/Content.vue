@@ -6,11 +6,12 @@
 
 <script>
 import styled from "vue-styled-components";
+import VuePerfectScrollbar from "vue-perfect-scrollbar";
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled(VuePerfectScrollbar)`
   flex: 1 1 auto;
   min-height: 0;
-  overflow: auto;
+  ${"" /* overflow: auto; */}
   display: flex;
   flex-direction: column;
 `;

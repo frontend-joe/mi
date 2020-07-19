@@ -84,6 +84,7 @@ body {
 }
 
 * {
+  outline: none;
   box-sizing: border-box;
 }
 
@@ -106,5 +107,10 @@ button {
   padding: 0;
   border: 0;
   background: transparent;
+}
+
+.ps__rail-x,
+.ps__rail-y {
+  z-index: 2;
 }
 </style>

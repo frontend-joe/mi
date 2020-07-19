@@ -43,7 +43,7 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode: "history",
+  // mode: "history",
   scrollBehavior() {
     return { x: undefined, y: undefined };
   }

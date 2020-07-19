@@ -8,10 +8,9 @@
 import styled from "vue-styled-components";
 
 const StyledWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 `;
 
 export default {

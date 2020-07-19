@@ -27,12 +27,10 @@ const StyledButtonWrapper = styled.div`
 const StyledButton = styled.button`
   position: relative;
   overflow: hidden;
-  width: 200px;
+  width: 150px;
   height: 50px;
-  background: #f8f8fd;
-  border-radius: 0.5rem 0.5rem 0 0;
   color: ${rgba("#090C22", 0.85)};
-  box-shadow: 8px 8px 10px #e8ebff, -2px -2px 15px #ffffff;
+  background: #d9d9f3;
   font-size: 18px;
   font-weight: 600;
 
@@ -43,11 +41,12 @@ const StyledButton = styled.button`
   &::after {
     content: "";
     position: absolute;
+    z-index: 1;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 3px;
-    background: #f90549;
+    height: 4px;
+    background: #49416d;
     transition: transform ${transitionDuration};
   }
 `;
@@ -80,7 +79,7 @@ const Button3 = styled(StyledButton)`
   }
 
   &.button::after {
-    transform: scale(1, 1) translateY(3px);
+    transform: scale(1, 1) translateY(4px);
   }
 `;
 

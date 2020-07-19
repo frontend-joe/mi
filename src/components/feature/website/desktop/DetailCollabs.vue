@@ -1,10 +1,21 @@
 <template>
-  <Wrapper v-tippy :content="`Collab with @${collabInsta}`">
-    <Collab>
+  <Wrapper>
+    <Collab
+      href="https://instagram.com/frontendjoe"
+      target="_blank"
+      v-tippy
+      content="@frontendjoe"
+    >
       <CollabImage :src="require('@/assets/images/joe.png')" />
       <CollabName>@frontendjoe</CollabName>
     </Collab>
-    <Collab :float="true">
+    <Collab
+      :href="`https://instagram.com/${collabInsta}`"
+      target="_blank"
+      v-tippy
+      :content="`@${collabInsta}`"
+      :float="true"
+    >
       <CollabImage :src="collabImage" />
       <CollabName float>@{{ collabInsta }}</CollabName>
     </Collab>
@@ -19,14 +30,19 @@ const collabProps = { float: Boolean };
 const Wrapper = styled.div`
   flex: 0 0 auto;
   display: flex;
+  outline: none;
 `;
 
-const Collab = styled("div", collabProps)`
+const Collab = styled("a", collabProps)`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+
+  &:hover {
+    z-index: 1;
+  }
 
   ${props => (props.float ? "z-index: 0; transform: translateX(-25px)" : "")};
 `;

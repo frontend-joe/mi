@@ -6,21 +6,27 @@
       </ComponentWrapper>
     </DetailBackground>
     <DetailContent>
-      <InteractionNumber class="number">
-        #{{ activeItemNumber }}
-      </InteractionNumber>
-      <HeaderRow :open="open">
-        <InteractionTitle>
-          The <br />
-          {{ interactionTitle }}
-        </InteractionTitle>
-        <DetailCollabs :collabImage="collabImage" :collabInsta="collabInsta" />
-      </HeaderRow>
+      <HeaderWrapper :open="open">
+        <InteractionNumber class="number">
+          #{{ activeItemNumber }}
+        </InteractionNumber>
+
+        <HeaderRow>
+          <InteractionTitle>
+            The <br />
+            {{ interactionTitle }}
+          </InteractionTitle>
+          <DetailCollabs
+            :collabImage="collabImage"
+            :collabInsta="collabInsta"
+          />
+        </HeaderRow>
+      </HeaderWrapper>
       <CodeTitle v-if="false">
         Vuejs Code
       </CodeTitle>
       <CodeAnimation :open="open">
-        <CodeWrapper>
+        <CodeWrapper id="code-box">
           <VueCodeHighlight class="language-javascript">
             {{ code }}
           </VueCodeHighlight>
@@ -100,12 +106,16 @@ const headerAnimation = keyframes`
   }
 `;
 
+const HeaderWrapper = styled("div", detailProps)`
+  ${props => (props.open ? `animation: ${headerAnimation} 2s` : "")};
+`;
+
 const HeaderRow = styled("div", detailProps)`
+  flex: 0 0 auto;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
   margin-bottom: 2rem;
-  ${props => (props.open ? `animation: ${headerAnimation} 2s` : "")};
 `;
 
 const InteractionNumber = styled.div`
@@ -114,7 +124,7 @@ const InteractionNumber = styled.div`
   font-weight: 700;
   text-transform: capitalize;
   letter-spacing: -3px;
-  color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.28);
 `;
 
 const InteractionTitle = styled.div`
@@ -159,6 +169,7 @@ const CodeAnimation = styled("div", detailProps)`
   display: flex;
   flex-direction: column;
   ${props => (props.open ? `animation: ${codeAnimation} 2s` : "")};
+  background: #f7f7f7;
 `;
 
 const CodeWrapper = styled(VuePerfectScrollbar)`
@@ -181,6 +192,7 @@ export default {
     DetailBackground,
     DetailContent,
     ComponentWrapper,
+    HeaderWrapper,
     HeaderRow,
     InteractionTitle,
     InteractionNumber,
@@ -189,6 +201,17 @@ export default {
     CodeWrapper,
     CodeTitle,
     DetailCollabs
+  },
+  watch: {
+    $route() {
+      if (this.$route.params.name) {
+        const codeBox = document.getElementById("code-box");
+
+        if (codeBox) {
+          codeBox.scrollTop = 0;
+        }
+      }
+    }
   }
 };
 </script>

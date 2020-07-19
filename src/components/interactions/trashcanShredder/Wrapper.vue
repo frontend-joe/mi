@@ -66,7 +66,7 @@ const StyledButton = styled("button", buttonProps)`
   font-family: "DM Sans", sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  background: ${props => (props.deleted ? "#5ABE97" : "#192E3F")};
+  background: ${props => (props.deleted ? "#5ABE97" : "#275982")};
   color: #ffffff;
   cursor: pointer;
   outline: none;
@@ -74,7 +74,7 @@ const StyledButton = styled("button", buttonProps)`
   overflow: hidden;
 
   &:hover {
-    ${props => (!props.disabled ? "background: #192E3F" : "")};
+    ${props => (!props.disabled ? "background: #275982" : "")};
   }
 
   &:disabled {

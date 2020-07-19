@@ -102,18 +102,12 @@ export default {
   methods: {
     onClick(event) {
       // get mouse position
-
       const rect = event.target.getBoundingClientRect();
       const clientX = event.clientX;
       const clientY = event.clientY;
 
       const clientXInButton = clientX - rect.x;
       const clientYInButton = clientY - rect.y;
-
-      //console.log("onClick", event, rect);
-
-      console.log("clientXInButton", clientXInButton);
-      console.log("clientYInButton", clientYInButton);
 
       // create element
       const rippleButton = document.getElementById("ripple-button");
