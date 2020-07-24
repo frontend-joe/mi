@@ -1,14 +1,5 @@
 <template>
   <StyledWrapper>
-    <StyledSwipeMessage>
-      <StyledSwipeIcon class="material-icons-outlined">
-        arrow_back
-      </StyledSwipeIcon>
-      <span>Swipe</span>
-      <StyledSwipeIcon class="material-icons-outlined">
-        arrow_forward
-      </StyledSwipeIcon>
-    </StyledSwipeMessage>
     <Topbar />
     <Content>
       <Carousel
@@ -27,8 +18,13 @@
         </Slide>
       </Carousel>
     </Content>
+    <Detail
+      v-on:close-dialog="detailOpen = false"
+      :isOpen="detailOpen"
+      :interaction="slides && slides[navigateTo]"
+    />
     <Bottombar
-      v-if="false"
+      v-on:viewcode-clicked="handleCodeButtonClicked"
       :dots="dots"
       :collabs="slides && [slides[navigateTo]]"
       :activeIndex="navigateTo"
@@ -39,11 +35,11 @@
 
 <script>
 import styled from "vue-styled-components";
-import { rgba } from "polished";
 import { Carousel, Slide } from "vue-carousel";
 
 import Topbar from "./topbar/Topbar";
 import Content from "./content/Content";
+import Detail from "./detail/Detail";
 import Bottombar from "./bottombar/Bottombar";
 
 const StyledWrapper = styled.div`
@@ -73,27 +69,6 @@ const StyledSlide = styled("div", styleProps)`
   background: ${props => props.background || "transparent"};
 `;
 
-const StyledSwipeMessage = styled.div`
-  position: fixed;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: ${rgba("#10132F", 0.38)};
-
-  @media only screen and (min-width: 601px) {
-    display: none;
-  }
-`;
-
-const StyledSwipeIcon = styled.span`
-  margin: 0 0.5rem;
-  font-size: 18px;
-`;
-
 export default {
   props: {
     slides: Array
@@ -102,12 +77,11 @@ export default {
     StyledWrapper,
     Topbar,
     Content,
+    Detail,
     Bottombar,
     Carousel,
     Slide,
-    StyledSlide,
-    StyledSwipeMessage,
-    StyledSwipeIcon
+    StyledSlide
   },
   computed: {
     dots() {
@@ -116,10 +90,15 @@ export default {
   },
   data: function() {
     return {
+      detailOpen: false,
       navigateTo: 0
     };
   },
   methods: {
+    handleCodeButtonClicked(interationTitle) {
+      this.detailOpen = true;
+      console.log("handleCodeButtonClicked", interationTitle);
+    },
     handleDotClicked(dot) {
       this.navigateTo = dot;
     },

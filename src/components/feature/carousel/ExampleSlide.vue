@@ -1,7 +1,7 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#7C12BA">
+      <Frame background="#FBFBFF">
         <StyledSlowMoMessage v-if="false">
           Part I Complete
         </StyledSlowMoMessage>
@@ -10,14 +10,14 @@
           :src="require('@/assets/images/slow-motion.png')"
         />
         <StyledBackground
-          v-if="false"
+          v-if="true"
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top textColor="#fff" topRightText="#19" />
+        <Top textColor="#10132F" topRightText="#20" />
         <Middle>
-          <FocalInteraction :style="{ transform: 'scale(1)' }" />
+          <FocalInteraction :style="{ transform: 'scale(1.75)' }" />
         </Middle>
-        <Bottom handleColor="grey" textColor="#fff" />
+        <Bottom handleColor="purple" textColor="#10132F" />
       </Frame>
       <ImagePrev
         v-if="false"
@@ -34,7 +34,7 @@
 <script>
 import styled, { keyframes } from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/MaterialInput";
+import FocalInteraction from "@/components/interactions/DropdownButtonSimple";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

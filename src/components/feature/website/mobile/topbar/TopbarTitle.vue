@@ -1,6 +1,6 @@
 <template>
   <StyledTitle>
-    Micro Interactions
+    MI
   </StyledTitle>
 </template>
 
@@ -11,10 +11,10 @@ import { rgba } from "polished";
 const StyledTitle = styled.div`
   flex: 1;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   color: ${rgba("white", 0.75)};
 `;
 

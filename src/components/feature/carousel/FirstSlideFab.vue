@@ -1,29 +1,29 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#0C0212">
+      <Frame background="#18173a">
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Dropdown</StyledBackgroundText>
+        <StyledBackgroundText>Floating</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#20" />
+        <Top topRightText="#21" />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
-            <StyledNumber>#20</StyledNumber>
+            <StyledNumber>#21</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Dropdown</StyledTitleLongText>
+              <StyledTitleLongText>Floating</StyledTitleLongText>
               <StyledTitleLongText>Button</StyledTitleLongText>
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
               <StyledImage :src="require('@/assets/images/joe-grey.png')" />
               <StyledImage
-                :src="require('@/assets/images/karina.png')"
+                :src="require('@/assets/images/eugene.png')"
                 isLast
               />
             </div>
@@ -48,7 +48,7 @@
           :src="require('@/assets/images/first-slide-branding2.png')"
         />
         <StyledBrandingBottom
-          v-if="true"
+          v-if="false"
           :src="require('@/assets/images/first-slide-branding-bottom.png')"
         />
         <StyledPlayButton
@@ -67,7 +67,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/DropdownButton";
+import FocalInteraction from "@/components/interactions/FabButton";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -118,8 +118,8 @@ const StyledFocalFrame = styled.div`
   justify-content: center; */}
   position: absolute;
   z-index: 10;
-  right: 15%;
-  bottom: 0;
+  right: -104px;
+  bottom: -114px;
   height: 273px;
   width: 55%;
   display: flex;

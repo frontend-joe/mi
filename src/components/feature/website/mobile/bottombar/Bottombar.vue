@@ -1,24 +1,28 @@
 <template>
   <StyledWrapper>
-    <BottombarLogo />
+    <SwipeIndicator v-if="false" />
+    <ViewCodeButton v-on:viewcode-clicked="$emit('viewcode-clicked')" />
+    <!-- <BottombarLogo />
     <BottombarDots
       :activeIndex="activeIndex"
       v-on:dot-clicked="onDotClicked"
       :dots="dots"
     />
-    <BottombarCollabs :collabs="collabs" />
+    <BottombarCollabs :collabs="collabs" /> -->
   </StyledWrapper>
 </template>
 
 <script>
 import styled from "vue-styled-components";
-import BottombarDots from "./BottombarDots";
-import BottombarLogo from "./BottombarLogo";
-import BottombarCollabs from "./BottombarCollabs";
+import SwipeIndicator from "./SwipeIndicator";
+import ViewCodeButton from "./ViewCodeButton";
+// import BottombarDots from "./BottombarDots";
+// import BottombarLogo from "./BottombarLogo";
+// import BottombarCollabs from "./BottombarCollabs";
 
 const StyledWrapper = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 1001;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -26,13 +30,9 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 56px;
-  padding: 0 1rem;
+  padding: 0 2rem;
   flex: 0 0 56px;
-  background: #040404;
-
-  @media (min-width: ${props => props.theme.screenWidthMd}) {
-    padding: 0 2rem;
-  }
+  pointer-events: none;
 `;
 
 export default {
@@ -43,9 +43,11 @@ export default {
   },
   components: {
     StyledWrapper,
-    BottombarDots,
-    BottombarLogo,
-    BottombarCollabs
+    SwipeIndicator,
+    ViewCodeButton
+    // BottombarDots,
+    // BottombarLogo,
+    // BottombarCollabs
   },
   methods: {
     onDotClicked(dot) {

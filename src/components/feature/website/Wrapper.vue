@@ -30,6 +30,8 @@ import HighlightLink from "@/components/interactions/HighlightLink";
 import SwitchInput from "@/components/interactions/SwitchInput";
 import PasswordValidator2 from "@/components/interactions/PasswordValidator2";
 import ProgressButton from "@/components/interactions/ProgressButton";
+import MaterialInput from "@/components/interactions/MaterialInput";
+import DropdownButton from "@/components/interactions/DropdownButton";
 
 const Wrapper = styled.div`
   flex: 1 1 auto;
@@ -207,8 +209,26 @@ export default {
           collab: "mikevdijssel",
           image: require("@/assets/images/mike.png"),
           component: ProgressButton,
-          background: "#292735",
+          background: "#1d1935",
           githubUrl: "ProgressButton.vue"
+        },
+        {
+          id: 19,
+          name: "material-input",
+          collab: "gabrielemalaspina",
+          image: require("@/assets/images/gabriele.png"),
+          component: MaterialInput,
+          background: "#7C12BA",
+          githubUrl: "MaterialInput.vue"
+        },
+        {
+          id: 20,
+          name: "dropdown-button",
+          collab: "karinapopovskaya.dsgn",
+          image: require("@/assets/images/karina.png"),
+          component: DropdownButton,
+          background: "#461d67",
+          githubUrl: "DropdownButton.vue"
         }
       ]
     };

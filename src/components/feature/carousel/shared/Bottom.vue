@@ -4,7 +4,10 @@
     <SaveIcon :style="{ display: 'none' }" class="material-icons-outlined">
       bookmark_outline
     </SaveIcon>
-    <ArrowIcon :textColor="textColor" class="material-icons-outlined"
+    <ArrowIcon
+      v-if="true"
+      :textColor="textColor"
+      class="material-icons-outlined"
       >bookmark_outline</ArrowIcon
     >
   </BottomRow>

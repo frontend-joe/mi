@@ -25,7 +25,7 @@
 
 <script>
 import styled from "vue-styled-components";
-import FocalInteraction from "@/components/interactions/rippleButton/WrapperCss";
+import FocalInteraction from "@/components/interactions/FabButton";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

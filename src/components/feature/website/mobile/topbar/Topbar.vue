@@ -1,13 +1,17 @@
 <template>
   <StyledWrapper>
+    <TopbarIconLink linkUrl="https://github.com/vuezy/mi" icon="github" />
     <TopbarTitle />
-    <TopbarGithubLink v-if="false" />
+    <TopbarIconLink
+      linkUrl="https://www.instagram.com/frontendjoe/"
+      icon="instagram"
+    />
   </StyledWrapper>
 </template>
 
 <script>
 import styled from "vue-styled-components";
-import TopbarGithubLink from "./TopbarGithubLink";
+import TopbarIconLink from "./TopbarIconLink";
 import TopbarTitle from "./TopbarTitle";
 
 const StyledWrapper = styled.div`
@@ -21,7 +25,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  padding: 0 1rem;
+  padding: 0;
   color: white;
 
   @media (min-width: ${props => props.theme.screenWidthMd}) {
@@ -32,7 +36,7 @@ const StyledWrapper = styled.div`
 export default {
   components: {
     StyledWrapper,
-    TopbarGithubLink,
+    TopbarIconLink,
     TopbarTitle
   }
 };

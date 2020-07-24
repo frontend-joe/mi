@@ -2,7 +2,7 @@
   <StyledOuterWrapper>
     <StyledWrapper :open="open">
       <StyledButton @click="open = !open">
-        <StyledText>Filter Results</StyledText>
+        <StyledText>Filter By</StyledText>
         <StyledIconWrapper>
           <StyledIconRectangle1 class="rectangle" :open="open" />
           <StyledIconRectangle2 class="rectangle" :open="open" />
@@ -22,21 +22,22 @@
 
 <script>
 import styled, { css } from "vue-styled-components";
-import { rgba, darken } from "polished";
+import { darken } from "polished";
 
 const props = { open: Boolean };
 
-const backgroundColor = "#fff";
-const colorTextActive = "#6e45bd";
+const backgroundColor = "#7C12BA";
+const colorTextActive = "#fff";
 const colorTextHover = darken(0.1, colorTextActive);
 const colorBorder = "#f1f1f3";
-const colorMenuItemHover = "#F3F0FA";
+const colorMenuItemHover = "rgba(0,0,0,0.5)";
 
-const transitionDuration = "0.5s";
+const transitionDuration = "0.35s";
 
 const StyledOuterWrapper = styled.div`
   position: relative;
-  width: 220px;
+  width: 200px;
+  height: 56px;
 `;
 
 const StyledWrapper = styled("div", props)`
@@ -60,19 +61,18 @@ const StyledWrapper = styled("div", props)`
 `;
 
 const StyledMenu = styled("div", props)`
-  padding: 14px 0;
-  border-top: 1px solid ${rgba(colorTextActive, 0.075)};
+  padding: 0 0.5rem 0.5rem;
   transition: all ${transitionDuration};
 `;
 
 const StyledMenuItem = styled.div`
   height: 40px;
-  margin: 0 0.5rem;
-  padding: 0 0.5rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 20px;
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
   transition: background 0.25s;
 
   &:hover {
@@ -82,24 +82,28 @@ const StyledMenuItem = styled.div`
 `;
 
 const StyledMenuItemIcon = styled.span`
-  margin-right: 0.5rem;
+  margin-right: 0.325rem;
   font-size: 20px;
   color: ${colorTextActive}
   border-radius: 50%;
   padding: 2px;
 `;
 
-const StyledMenuItemText = styled.div``;
+const StyledMenuItemText = styled.div`
+  color: ${colorTextActive};
+`;
 
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 0.75rem 0 1rem;
-  font-weight: 700;
+  font-weight: 500;
   color: ${colorTextActive};
   height: 56px;
+  line-height: 64px;
   width: 100%;
+  cursor: pointer;
   transition: border-color ${transitionDuration}, color ${transitionDuration};
 
   &:hover {
@@ -123,8 +127,9 @@ const StyledIconWrapper = styled.div`
 
 const rectangleDefaults = css`
   position: absolute;
-  width: 2px;
+  width: 3px;
   height: 10px;
+  border-radius: 2px;
   transform-origin: 50% 50%;
   background: ${colorTextActive};
   transition: transform ${transitionDuration}, background ${transitionDuration};
@@ -162,7 +167,7 @@ export default {
   },
   data() {
     return {
-      open: true,
+      open: false,
       menuItems: [
         { title: "Distance", icon: "location_on" },
         { title: "Best Match", icon: "grade" },

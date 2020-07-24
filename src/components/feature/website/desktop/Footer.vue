@@ -49,21 +49,20 @@
         </div>
         <SocialMedia>
           <SocialButton
+            v-tippy="{ distance: 20 }"
+            content="Instagram"
             @click="
               handleSocialButtonClick('https://www.instagram.com/frontendjoe/')
             "
             class="icofont-instagram"
           />
           <SocialButton
+            v-tippy="{ distance: 20 }"
+            content="GitHub"
             @click="handleSocialButtonClick('https://github.com/vuezy')"
             class="icofont-github"
           />
-          <SocialButton
-            v-tippy
-            :content="'test'"
-            disabled
-            class="icofont-youtube"
-          />
+          <SocialButton disabled class="icofont-youtube" />
         </SocialMedia>
       </FooterMainContent>
     </FooterMain>
@@ -111,6 +110,11 @@ const ProjectCard = styled("a", styleProps)`
   background: ${props => props.background};
   color: white;
   margin: 0 1rem;
+  transition: transform 0.35s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
 `;
 
 const ProjectIcon = styled.span`
