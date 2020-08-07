@@ -13,9 +13,9 @@
           v-if="true"
           :src="require('@/assets/images/wave-example-slide.png')"
         />
-        <Top textColor="#10132F" topRightText="#20" />
+        <Top textColor="#10132F" topRightText="#22" />
         <Middle>
-          <FocalInteraction :style="{ transform: 'scale(1.75)' }" />
+          <FocalInteraction :style="{ transform: 'scale(1)' }" />
         </Middle>
         <Bottom handleColor="purple" textColor="#10132F" />
       </Frame>
@@ -34,7 +34,7 @@
 <script>
 import styled, { keyframes } from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/DropdownButtonSimple";
+import FocalInteraction from "@/components/interactions/KebabButton";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";

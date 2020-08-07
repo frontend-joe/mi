@@ -7,28 +7,28 @@
       <MenuCircle :isOpen="isOpen">
         <IconButton
           :isOpen="isOpen"
-          class="material-icons-outlined"
-          top="-42px"
-          left="33px"
-          textColor="#faff06"
-          >image</IconButton
-        >
-        <IconButton
-          :isOpen="isOpen"
-          class="material-icons-outlined"
-          top="-19px"
-          left="-18px"
-          textColor="#42E2B8"
-          >videocam</IconButton
-        >
-        <IconButton
-          :isOpen="isOpen"
-          class="material-icons-outlined"
-          top="35px"
-          left="-41px"
+          top="37px"
+          left="-44px"
           textColor="#2CC3FB"
-          >speaker</IconButton
         >
+          <font-awesome-icon :icon="['fas', 'trash-alt']" />
+        </IconButton>
+        <IconButton
+          :isOpen="isOpen"
+          top="-18px"
+          left="-20px"
+          textColor="#42E2B8"
+        >
+          <font-awesome-icon :icon="['fas', 'tag']" />
+        </IconButton>
+        <IconButton
+          :isOpen="isOpen"
+          top="-46px"
+          left="42px"
+          textColor="#ebef3c"
+        >
+          <font-awesome-icon :icon="['fas', 'edit']" />
+        </IconButton>
       </MenuCircle>
     </MenuWrapper>
   </Wrapper>
@@ -38,7 +38,7 @@
 import styled, { keyframes } from "vue-styled-components";
 import { rgba } from "polished";
 
-const animationDuration = 1.5;
+const animationDuration = 1;
 
 const buttonSize = "48px";
 
@@ -63,14 +63,20 @@ const fabIconAnimationIn = keyframes`
   0% {
     transform: rotate(0);
   }
+  25% {
+    transform: rotate(135deg);
+  }
   100% {
-    transform: rotate(315deg);
+    transform: rotate(135deg);
   }
 `;
 
 const fabIconAnimationOut = keyframes`
   0% {
-    transform: rotate(315deg);
+    transform: rotate(135deg);
+  }
+  25% {
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(0deg);
@@ -88,16 +94,16 @@ const FabButton = styled("button", styleProps)`
   width: ${buttonSize};
   height: ${buttonSize};
   border-radius: 50%;
-  transform: rotate(${props => (props.isOpen ? "315deg" : "0deg")});
+  transform: rotate(${props => (props.isOpen ? "135deg" : "0deg")});
 
   ${props =>
     props.isOpen === true
-      ? `animation: ${fabIconAnimationIn} ${animationDuration / 2}s linear`
+      ? `animation: ${fabIconAnimationIn} ${animationDuration}s linear`
       : ""};
 
   ${props =>
     props.isOpen === false
-      ? `animation: ${fabIconAnimationOut} ${animationDuration / 2}s linear`
+      ? `animation: ${fabIconAnimationOut} ${animationDuration}s linear`
       : ""};
 
   & > span {
@@ -107,12 +113,12 @@ const FabButton = styled("button", styleProps)`
 
 const menuWrapperAnimationIn = keyframes`
 0% {
-  transform: rotate(-140deg);
+  transform: rotate(-135deg);
+}
+20% {
+  transform: rotate(-135deg);
 }
 50% {
-  transform: rotate(-140deg);
-}
-100% {
   transform: rotate(0deg);
 }
 `;
@@ -121,11 +127,11 @@ const menuWrapperAnimationOut = keyframes`
 0% {
   transform: rotate(0deg);
 }
-25% {
-  transform: rotate(-140deg);
+30% {
+  transform: rotate(-135deg);
 }
 100% {
-  transform: rotate(-140deg);
+  transform: rotate(-135deg);
 }
 `;
 
@@ -135,7 +141,7 @@ const MenuWrapper = styled("div", styleProps)`
   left: 0;
   width: 200px;
   height: 200px;
-  transform: rotate(${props => (props.isOpen ? "0deg" : "-140deg")});
+  transform: rotate(${props => (props.isOpen ? "0deg" : "-135deg")});
 
   ${props =>
     props.isOpen === true
@@ -164,7 +170,7 @@ const menuAnimationOut = keyframes`
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
-50% {
+25% {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
@@ -178,8 +184,8 @@ const MenuCircle = styled("div", styleProps)`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   border: 50px solid ${rgba("white", 0.05)};
   opacity: ${props => (props.isOpen ? 1 : 0)};
@@ -201,7 +207,7 @@ const iconAnimationIn = keyframes`
   0% {
     opacity: 0;
   }
-  50% {
+  75% {
     opacity: 0;
   }
   100% {
@@ -214,9 +220,6 @@ const iconAnimationOut = keyframes`
     opacity: 1;
   }
   25% {
-    opacity: 1;
-  }
-  50% {
     opacity: 0;
   }
   100% {
@@ -229,15 +232,23 @@ const IconButton = styled("button", styleProps)`
   top: ${props => props.top};
   left: ${props => props.left};
   color: ${props => props.textColor};
-  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
   ${props =>
     props.isOpen === true
-      ? `animation: ${iconAnimationIn} ${animationDuration}s`
+      ? `animation: ${iconAnimationIn} ${animationDuration / 4}s`
       : ""};
   ${props =>
     props.isOpen === false
       ? `animation: ${iconAnimationOut} ${animationDuration}s linear`
       : ""};
+
+  transition: transform 0.25s;
+
+  &:hover {
+    transform: scale(1.175);
+  }
 `;
 
 export default {

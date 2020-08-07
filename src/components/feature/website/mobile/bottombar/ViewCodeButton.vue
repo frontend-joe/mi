@@ -27,6 +27,7 @@ export default {};
 }
 
 .button-text {
+  line-height: 1;
   font-weight: 700;
   color: white;
 }

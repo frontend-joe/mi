@@ -1,5 +1,6 @@
 <template>
   <Wrapper>
+    <IntroMessage />
     <Mobile v-if="$vssWidth <= 992" :slides="slides" />
     <Desktop v-if="$vssWidth > 992" :components="slides" />
   </Wrapper>
@@ -11,6 +12,8 @@ import VueScreenSize from "vue-screen-size";
 
 import Mobile from "./mobile/Mobile";
 import Desktop from "./desktop/Desktop";
+
+import IntroMessage from "./layout/IntroMessage";
 
 import TrashcanShredder from "@/components/interactions/trashcanShredder/Wrapper";
 import HamburgerClose from "@/components/interactions/hamburgerClose/Wrapper2";
@@ -43,7 +46,8 @@ export default {
   components: {
     Wrapper,
     Mobile,
-    Desktop
+    Desktop,
+    IntroMessage
   },
   mixins: [VueScreenSize.VueScreenSizeMixin],
   data() {
@@ -155,7 +159,7 @@ export default {
           collab: "gabrielemalaspina",
           image: require("@/assets/images/gabriele.png"),
           component: OutlinedInput,
-          background: "#5681b1",
+          background: "#59a3f7",
           githubUrl: "OutlinedInput.vue"
         },
         {

@@ -8,6 +8,7 @@ import {
   faVuejs,
   faInstagram
 } from "@fortawesome/free-brands-svg-icons";
+import { faTag, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 Vue.config.productionTip = false;
@@ -18,6 +19,9 @@ Vue.component("tippy", TippyComponent);
 library.add(faGithub);
 library.add(faInstagram);
 library.add(faVuejs);
+library.add(faTag);
+library.add(faEdit);
+library.add(faTrashAlt);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

@@ -1,7 +1,10 @@
 <template>
   <StyledWrapper>
     <SwipeIndicator v-if="false" />
-    <ViewCodeButton v-on:viewcode-clicked="$emit('viewcode-clicked')" />
+    <ViewCodeButton
+      v-if="true"
+      v-on:viewcode-clicked="$emit('viewcode-clicked')"
+    />
     <!-- <BottombarLogo />
     <BottombarDots
       :activeIndex="activeIndex"
@@ -28,7 +31,7 @@ const StyledWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 56px;
   padding: 0 2rem;
   flex: 0 0 56px;

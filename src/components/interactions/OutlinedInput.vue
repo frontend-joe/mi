@@ -1,11 +1,6 @@
 <template>
-  <Wrapper>
-    <Outline
-      :outlineColor="outlineColor"
-      class="outline"
-      :isFocused="focused"
-    />
-    <TextboxWrapper :backgroundColor="backgroundColor">
+  <OuterWrapper>
+    <Wrapper :isFocused="focused">
       <Textbox
         type="text"
         placeholder="Email Address"
@@ -15,17 +10,15 @@
         @focus="onFocus"
         @blur="onBlur"
       />
-    </TextboxWrapper>
-    <ClearButton
-      @click="textboxValue = ''"
-      :focused="focused"
-      :notEmpty="textboxValue.length > 0"
-      :outlineColor="outlineColor"
-      class="material-icons-outlined"
-    >
-      cancel
-    </ClearButton>
-  </Wrapper>
+      <ClearButton
+        @click="textboxValue = ''"
+        :focused="focused"
+        :notEmpty="textboxValue.length > 0"
+        class="material-icons-outlined"
+        >cancel</ClearButton
+      >
+    </Wrapper>
+  </OuterWrapper>
 </template>
 
 <script>
@@ -43,44 +36,40 @@ const scProps = {
   notEmpty: Boolean
 };
 
-const Wrapper = styled.div`
-  position: relative;
+const OuterWrapper = styled.div`
   padding: 2px;
-  height: 56px;
-  width: 200px;
-  border-radius: 8px;
-`;
-
-const Outline = styled("div", scProps)`
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: ${props =>
-    props.isFocused
-      ? rgba(props.outlineColor, 1)
-      : rgba(props.outlineColor, 0.8)};
-  border-radius: 9px;
-  ${props => (props.isFocused ? "transform: scale(1.010, 1.04)" : "")};
-  transition: transform ${transitionDuration}, background ${transitionDuration};
-`;
-
-const TextboxWrapper = styled("div", scProps)`
   position: relative;
-  z-index: 2;
-  height: 100%;
-  border-radius: 8px;
-  background: ${props => props.backgroundColor};
+`;
+
+const Wrapper = styled("div", scProps)`
+  &::before {
+    content: "";
+    opacity: ${props => (props.isFocused ? 1 : 0)};
+    position: absolute;
+    z-index: 1;
+    background: #608dc7;
+    border-radius: 0.5rem;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    transition-property: transform, opacity;
+    transition-duration: 0.35s;
+  }
+
+  ${"" /* box-shadow: inset 2px 2px 0px red, inset -2px -2px 0px red; */}
 `;
 
 const Textbox = styled("input", scProps)`
+  position: relative;
+  z-index: 2;
   outline: none;
   border: 0;
-  background: transparent;
-  width: 100%;
-  height: 100%;
+  background: white;
+  border-radius: 0.5rem;
+  height: 56px;
+  width: 200px;
+  border: 2px solid #3977bd;
   text-indent: 0.5rem;
   color: ${props => props.textboxColor};
 
@@ -94,21 +83,16 @@ const ClearButton = styled("button", scProps)`
   z-index: 3;
   top: 16px;
   right: 14px;
-  color: ${props => rgba(props.outlineColor, 0.5)};
-  opacity: ${props => (props.isFocused && props.notEmpty ? 1 : 0)}
-  transition: opacity ${transitionDuration}, color ${transitionDuration};
-
-  &:hover {
-    color: ${props => props.outlineColor};
-  }
+  color: ${rgba("black", 0.5)};
+  opacity: ${props => (props.isFocused && props.notEmpty ? 1 : 0)};
+  transition: opacity ${transitionDuration};
 `;
 
 export default {
   props: scProps,
   components: {
+    OuterWrapper,
     Wrapper,
-    Outline,
-    TextboxWrapper,
     Textbox,
     ClearButton
   },

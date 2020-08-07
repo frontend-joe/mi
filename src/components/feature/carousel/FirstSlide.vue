@@ -1,31 +1,28 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#0C0212">
+      <Frame background="#9866d8">
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <StyledBackgroundText>Dropdown</StyledBackgroundText>
+        <StyledBackgroundText>Kebab Close</StyledBackgroundText>
         <StyledBubble
           :style="{ display: 'none' }"
           :src="require('@/assets/images/bubble.png')"
         />
-        <Top topRightText="#20" />
+        <Top topRightText="#22" />
         <Middle verticalAlign="flex-start" horizontalAlign="flex-start">
           <StyledContentLeft>
-            <StyledNumber>#20</StyledNumber>
+            <StyledNumber>#22</StyledNumber>
             <StyledTitle>
               The
-              <StyledTitleLongText>Dropdown</StyledTitleLongText>
+              <StyledTitleLongText>Kebab</StyledTitleLongText>
               <StyledTitleLongText>Button</StyledTitleLongText>
             </StyledTitle>
             <div :style="{ marginBottom: '4px' }">
-              <StyledImage :src="require('@/assets/images/joe-grey.png')" />
-              <StyledImage
-                :src="require('@/assets/images/karina.png')"
-                isLast
-              />
+              <StyledImage :src="require('@/assets/images/joe.png')" />
+              <StyledImage :src="require('@/assets/images/leeo.png')" isLast />
             </div>
             <!-- <StyledNumber>
               <StyledNumberIcon class="material-icons-outlined">
@@ -67,7 +64,7 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
-import FocalInteraction from "@/components/interactions/DropdownButton";
+import FocalInteraction from "@/components/interactions/KebabButtonSimple";
 import Frame from "./shared/Frame";
 import FrameWrapper from "./shared/FrameWrapper";
 import ImageNext from "./shared/ImageNext";
@@ -120,7 +117,7 @@ const StyledFocalFrame = styled.div`
   z-index: 10;
   right: 15%;
   bottom: 0;
-  height: 273px;
+  height: 280px;
   width: 55%;
   display: flex;
   justify-content: center;

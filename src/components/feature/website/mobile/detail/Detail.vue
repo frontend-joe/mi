@@ -1,7 +1,17 @@
 <template>
   <Overlay @click="$emit('close-dialog')" :isOpen="isOpen">
     <Dialog :isOpen="isOpen">
-      {{ interaction.title }}
+      <InteractionNumber>{{ interaction.id }}</InteractionNumber>
+      <InteractionTitle
+        :style="{ marginBottom: '2rem' }"
+        :interactionName="interaction.name"
+      />
+      <InteractionArtists
+        :style="{ marginBottom: '2rem', transform: 'scale(0.5)' }"
+        :collabImage="interaction.image"
+        :collabInsta="interaction.collab"
+      />
+      <InteractionCode :githubPath="interaction.githubUrl" />
     </Dialog>
   </Overlay>
 </template>
@@ -9,6 +19,12 @@
 <script>
 import styled from "vue-styled-components";
 import { rgba } from "polished";
+import {
+  InteractionTitle,
+  InteractionNumber,
+  InteractionCode,
+  InteractionArtists
+} from "@/components/feature/website/shared";
 
 const transitionDuration = "0.65s";
 
@@ -39,6 +55,9 @@ const Dialog = styled("div", styleProps)`
   right: 0;
   width: 80%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
   background: white;
   transform: translateX(${props => (props.isOpen ? 0 : "100%")});
   transition: transform ${transitionDuration};
@@ -51,7 +70,11 @@ export default {
   },
   components: {
     Overlay,
-    Dialog
+    Dialog,
+    InteractionTitle,
+    InteractionNumber,
+    InteractionCode,
+    InteractionArtists
   }
 };
 </script>

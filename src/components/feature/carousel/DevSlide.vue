@@ -1,13 +1,16 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#1D1E2C">
+      <Frame background="#4e1282">
         <StyledBackground
+          v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
         />
-        <Top topRightText="#05" />
+        <Top topRightText="#21" />
         <Middle>
-          <FocalInteraction buttonId="test" />
+          <CardFrame>
+            <FocalInteraction buttonId="test" />
+          </CardFrame>
         </Middle>
         <Bottom />
       </Frame>
@@ -51,8 +54,15 @@ const StyledBackground = styled.img`
   width: 200%;
 `;
 
+const CardFrame = styled.div`
+  position: absolute;
+  right: -38px;
+  bottom: -35px;
+`;
+
 export default {
   components: {
+    CardFrame,
     FocalInteraction,
     StyledWrapper,
     StyledBackground,

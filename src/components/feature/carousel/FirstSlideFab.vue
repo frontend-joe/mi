@@ -1,7 +1,7 @@
 <template>
   <StyledWrapper>
     <FrameWrapper>
-      <Frame background="#18173a">
+      <Frame background="#4e1282">
         <StyledBackground
           v-if="false"
           :src="require('@/assets/images/wave-first-slide.png')"
@@ -20,8 +20,12 @@
               <StyledTitleLongText>Floating</StyledTitleLongText>
               <StyledTitleLongText>Button</StyledTitleLongText>
             </StyledTitle>
-            <div :style="{ marginBottom: '4px' }">
-              <StyledImage :src="require('@/assets/images/joe-grey.png')" />
+            <div :style="{ marginBottom: '4px', whiteSpace: 'nowrap' }">
+              <StyledImage :src="require('@/assets/images/joe.png')" />
+              <StyledImage
+                :src="require('@/assets/images/mike.png')"
+                isMiddle
+              />
               <StyledImage
                 :src="require('@/assets/images/eugene.png')"
                 isLast
@@ -160,13 +164,15 @@ const StyledTitleLongText = styled.div`
   white-space: nowrap;
 `;
 
-const imageProps = { isLast: Boolean };
+const imageProps = { isLast: Boolean, isMiddle: Boolean };
 const StyledImage = styled("img", imageProps)`
   border-radius: 50%;
   width: 90px;
   height: 90px;
   border: 5px solid rgba(255, 255, 255, 0.15);
-  transform: translateX(${props => (props.isLast ? "-39px" : "0")});
+  transform: translateX(
+    ${props => (props.isMiddle ? "-39px" : props.isLast ? "-78px" : "0")}
+  );
 `;
 
 const StyledBranding1 = styled.img`
